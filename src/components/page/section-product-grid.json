@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_page_section_product_grids",
+  "info": {
+    "displayName": "section-product-grid"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "products": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::product.product"
+    }
+  },
+  "config": {}
+}

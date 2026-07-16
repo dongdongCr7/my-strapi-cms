@@ -1,0 +1,95 @@
+{
+  "kind": "collectionType",
+  "collectionName": "downloads",
+  "info": {
+    "singularName": "download",
+    "pluralName": "downloads",
+    "displayName": "download"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true
+    },
+    "sites": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::site.site",
+      "inversedBy": "downloads"
+    },
+    "category": {
+      "type": "enumeration",
+      "enum": [
+        "Datasheet",
+        "IES File",
+        "Installation Guide",
+        "Catalog",
+        "Warranty",
+        "Other"
+      ]
+    },
+    "file": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "files"
+      ]
+    },
+    "fileType": {
+      "type": "string"
+    },
+    "fileSize": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "thumbnail": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "relatedProducts": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::product.product",
+      "inversedBy": "downloads"
+    },
+    "relatedSeries": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::product-sery.product-sery",
+      "inversedBy": "downloads"
+    },
+    "relatedAccessories": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::accessory.accessory",
+      "inversedBy": "downloads"
+    },
+    "relatedTechnologies": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::technology.technology",
+      "inversedBy": "downloads"
+    },
+    "downloadCount": {
+      "type": "integer",
+      "default": 0
+    },
+    "publishTime": {
+      "type": "datetime"
+    }
+  }
+}

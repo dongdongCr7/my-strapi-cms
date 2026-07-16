@@ -1,0 +1,221 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sites",
+  "info": {
+    "singularName": "site",
+    "pluralName": "sites",
+    "displayName": "site"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name",
+      "required": true
+    },
+    "domain": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "favicon": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "defaultLocale": {
+      "type": "enumeration",
+      "required": true,
+      "default": "en",
+      "enum": [
+        "en",
+        "zh",
+        "de",
+        "fr",
+        "es"
+      ]
+    },
+    "statu": {
+      "type": "enumeration",
+      "default": "draft",
+      "enum": [
+        "draft",
+        "active",
+        "archived"
+      ]
+    },
+    "isPrimary": {
+      "type": "boolean",
+      "default": false
+    },
+    "theme": {
+      "type": "component",
+      "component": "shared.theme",
+      "repeatable": false
+    },
+    "seo": {
+      "type": "component",
+      "component": "seo.meta",
+      "repeatable": false
+    },
+    "analytics": {
+      "type": "json"
+    },
+    "contactInfo": {
+      "type": "component",
+      "component": "shared.contact-info",
+      "repeatable": false
+    },
+    "socialLinks": {
+      "type": "component",
+      "component": "shared.social-link",
+      "repeatable": true
+    },
+    "footerText": {
+      "type": "string"
+    },
+    "availableLanguages": {
+      "type": "json"
+    },
+    "publishTime": {
+      "type": "datetime"
+    },
+    "brands": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::brand.brand",
+      "mappedBy": "sites"
+    },
+    "productFamilies": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::product-family.product-family",
+      "mappedBy": "sites"
+    },
+    "productSeries": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::product-sery.product-sery",
+      "mappedBy": "sites"
+    },
+    "products": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::product.product",
+      "mappedBy": "sites"
+    },
+    "technologies": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::technology.technology",
+      "mappedBy": "sites"
+    },
+    "applications": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::application.application",
+      "mappedBy": "sites"
+    },
+    "industries": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::industry.industry",
+      "mappedBy": "sites"
+    },
+    "articles": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::article.article",
+      "mappedBy": "sites"
+    },
+    "videos": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::video.video",
+      "mappedBy": "sites"
+    },
+    "faqs": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::faq.faq",
+      "mappedBy": "sites"
+    },
+    "projects": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::project.project",
+      "mappedBy": "sites"
+    },
+    "accessories": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::accessory.accessory",
+      "mappedBy": "sites"
+    },
+    "downloads": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::download.download",
+      "mappedBy": "sites"
+    },
+    "certifications": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::certification.certification",
+      "mappedBy": "sites"
+    },
+    "formSubmissions": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::form-submission.form-submission",
+      "mappedBy": "site"
+    },
+    "navigations": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::navigation.navigation",
+      "mappedBy": "site"
+    },
+    "pages": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::page.page",
+      "mappedBy": "site"
+    },
+    "redirects": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::redirect.redirect",
+      "mappedBy": "site"
+    },
+    "tags": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::tag.tag",
+      "mappedBy": "sites"
+    },
+    "lightingEffects": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::lighting-effect.lighting-effect",
+      "mappedBy": "sites"
+    }
+  }
+}

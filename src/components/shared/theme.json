@@ -1,0 +1,59 @@
+{
+  "collectionName": "components_shared_themes",
+  "info": {
+    "displayName": "theme"
+  },
+  "options": {},
+  "attributes": {
+    "colorsPrimary": {
+      "type": "string",
+      "default": "#ff6600"
+    },
+    "colorsSecondary": {
+      "type": "string",
+      "default": "#1a1a2e"
+    },
+    "colorsAccent": {
+      "type": "string",
+      "default": "#2563eb"
+    },
+    "colorsDark": {
+      "type": "string",
+      "default": "#121222"
+    },
+    "fontsHeading": {
+      "type": "string",
+      "default": "Inter"
+    },
+    "fontsBody": {
+      "type": "string",
+      "default": "Inter"
+    },
+    "fontsMono": {
+      "type": "string",
+      "default": "JetBrains Mono"
+    },
+    "layoutMaxWidth": {
+      "type": "integer",
+      "default": 1280
+    },
+    "layoutHeaderHeight": {
+      "type": "integer",
+      "default": 72
+    },
+    "layoutBorderRadius": {
+      "type": "string",
+      "default": "4px"
+    },
+    "mode": {
+      "type": "enumeration",
+      "default": "light",
+      "enum": [
+        "light",
+        "dark",
+        "auto"
+      ]
+    }
+  },
+  "config": {}
+}

@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_page_section_testimonials",
+  "info": {
+    "displayName": "section-testimonials"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "testimonials": {
+      "type": "component",
+      "component": "shared.testimonial",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

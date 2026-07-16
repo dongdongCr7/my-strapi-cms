@@ -1,0 +1,53 @@
+{
+  "kind": "collectionType",
+  "collectionName": "redirects",
+  "info": {
+    "singularName": "redirect",
+    "pluralName": "redirects",
+    "displayName": "redirect"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "sourceUrl": {
+      "type": "string",
+      "required": true
+    },
+    "targetUrl": {
+      "type": "string",
+      "required": true
+    },
+    "site": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::site.site",
+      "inversedBy": "redirects"
+    },
+    "redirectType": {
+      "type": "enumeration",
+      "required": true,
+      "default": "a301",
+      "enum": [
+        "a301",
+        "a302",
+        "a410"
+      ]
+    },
+    "isActive": {
+      "type": "boolean",
+      "default": false
+    },
+    "hitCount": {
+      "type": "integer",
+      "default": 0
+    },
+    "note": {
+      "type": "text"
+    },
+    "publishTime": {
+      "type": "datetime"
+    }
+  }
+}

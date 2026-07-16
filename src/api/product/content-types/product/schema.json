@@ -1,0 +1,243 @@
+{
+  "kind": "collectionType",
+  "collectionName": "products",
+  "info": {
+    "singularName": "product",
+    "pluralName": "products",
+    "displayName": "product"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name",
+      "required": true
+    },
+    "model": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "sku": {
+      "type": "string",
+      "required": false,
+      "unique": true
+    },
+    "sites": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::site.site",
+      "inversedBy": "products"
+    },
+    "brands": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::brand.brand",
+      "inversedBy": "products"
+    },
+    "productFamilies": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::product-family.product-family",
+      "inversedBy": "products"
+    },
+    "productSeries": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::product-sery.product-sery",
+      "inversedBy": "products"
+    },
+    "shortDescription": {
+      "type": "text"
+    },
+    "longDescription": {
+      "type": "richtext"
+    },
+    "designPhilosophy": {
+      "type": "richtext"
+    },
+    "advantages": {
+      "type": "component",
+      "component": "shared.advantage",
+      "repeatable": true
+    },
+    "badges": {
+      "type": "component",
+      "component": "shared.badge",
+      "repeatable": true
+    },
+    "specifications": {
+      "type": "component",
+      "component": "shared.specification",
+      "repeatable": true
+    },
+    "comparisonTable": {
+      "type": "component",
+      "component": "product.comparison-row",
+      "repeatable": true
+    },
+    "heroImage": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "gallery": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "installationImages": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "recommendedPairing": {
+      "type": "component",
+      "component": "product.pairing",
+      "repeatable": true
+    },
+    "commonMistakes": {
+      "type": "component",
+      "component": "product.common-mistake",
+      "repeatable": true
+    },
+    "aiContent": {
+      "type": "component",
+      "component": "shared.ai-content",
+      "repeatable": false
+    },
+    "engineeringNotes": {
+      "type": "component",
+      "component": "shared.engineering-note",
+      "repeatable": true
+    },
+    "seo": {
+      "type": "component",
+      "component": "seo.meta",
+      "repeatable": false
+    },
+    "isFeatured": {
+      "type": "boolean",
+      "default": false
+    },
+    "isNew": {
+      "type": "boolean",
+      "default": false
+    },
+    "sortOrder": {
+      "type": "integer",
+      "default": 0
+    },
+    "publishTime": {
+      "type": "datetime"
+    },
+    "technologies": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::technology.technology",
+      "mappedBy": "relatedProducts"
+    },
+    "applications": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::application.application",
+      "mappedBy": "products"
+    },
+    "industries": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::industry.industry",
+      "mappedBy": "products"
+    },
+    "articles": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::article.article",
+      "mappedBy": "relatedProducts"
+    },
+    "videos": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::video.video",
+      "mappedBy": "relatedProducts"
+    },
+    "faqs": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::faq.faq",
+      "mappedBy": "relatedProducts"
+    },
+    "accessories": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::accessory.accessory",
+      "mappedBy": "compatibleProducts"
+    },
+    "downloads": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::download.download",
+      "mappedBy": "relatedProducts"
+    },
+    "certifications": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::certification.certification",
+      "mappedBy": "relatedProducts"
+    },
+    "form_submissions": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::form-submission.form-submission",
+      "mappedBy": "products"
+    },
+    "tags": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::tag.tag",
+      "mappedBy": "relatedProducts"
+    },
+    "lightingEffects": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::lighting-effect.lighting-effect",
+      "mappedBy": "products"
+    },
+    "keyFeatures": {
+      "type": "component",
+      "component": "shared.feature",
+      "repeatable": true
+    },
+    "products": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::product.product",
+      "inversedBy": "relatedProducts"
+    },
+    "relatedProducts": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::product.product",
+      "mappedBy": "products"
+    },
+    "projects": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::project.project",
+      "inversedBy": "products"
+    }
+  }
+}

@@ -1,0 +1,136 @@
+{
+  "kind": "collectionType",
+  "collectionName": "technologies",
+  "info": {
+    "singularName": "technology",
+    "pluralName": "technologies",
+    "displayName": "technology"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name",
+      "required": true
+    },
+    "sites": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::site.site",
+      "inversedBy": "technologies"
+    },
+    "shortDescription": {
+      "type": "text"
+    },
+    "longDescription": {
+      "type": "richtext"
+    },
+    "heroImage": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "icon": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "howItWorks": {
+      "type": "richtext"
+    },
+    "advantages": {
+      "type": "component",
+      "component": "shared.advantage",
+      "repeatable": true
+    },
+    "comparisonTable": {
+      "type": "component",
+      "component": "product.comparison-row",
+      "repeatable": true
+    },
+    "relatedProducts": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::product.product",
+      "inversedBy": "technologies"
+    },
+    "productFamilies": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::product-family.product-family",
+      "inversedBy": "technologies"
+    },
+    "productSeries": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::product-sery.product-sery",
+      "inversedBy": "technologies"
+    },
+    "aiContent": {
+      "type": "component",
+      "component": "shared.ai-content",
+      "repeatable": false
+    },
+    "seo": {
+      "type": "component",
+      "component": "seo.meta",
+      "repeatable": false
+    },
+    "publishTime": {
+      "type": "datetime"
+    },
+    "relatedArticles": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::article.article",
+      "mappedBy": "relatedTechnologies"
+    },
+    "videos": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::video.video",
+      "mappedBy": "relatedTechnologies"
+    },
+    "relatedFaqs": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::faq.faq",
+      "inversedBy": "relatedTechnologies"
+    },
+    "downloads": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::download.download",
+      "mappedBy": "relatedTechnologies"
+    },
+    "relatedTaqs": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::tag.tag",
+      "mappedBy": "relatedTechnologies"
+    },
+    "lightingEffects": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::lighting-effect.lighting-effect",
+      "mappedBy": "technologies"
+    },
+    "applications": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::application.application",
+      "mappedBy": "technologies"
+    }
+  }
+}

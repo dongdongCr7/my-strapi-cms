@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_product_comparison_rows",
+  "info": {
+    "displayName": "comparison-row"
+  },
+  "options": {},
+  "attributes": {
+    "feature": {
+      "type": "string",
+      "required": true
+    },
+    "ourProduct": {
+      "type": "string",
+      "required": true
+    },
+    "competitor": {
+      "type": "string"
+    },
+    "highlight": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "config": {}
+}

@@ -1,0 +1,53 @@
+{
+  "kind": "collectionType",
+  "collectionName": "navigations",
+  "info": {
+    "singularName": "navigation",
+    "pluralName": "navigations",
+    "displayName": "navigation"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name",
+      "required": true
+    },
+    "site": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::site.site",
+      "inversedBy": "navigations"
+    },
+    "menuType": {
+      "type": "enumeration",
+      "default": "main",
+      "enum": [
+        "main",
+        "footer",
+        "sidebar",
+        "mobile"
+      ]
+    },
+    "items": {
+      "type": "component",
+      "component": "navigation.nav-item",
+      "repeatable": true
+    },
+    "footerColumns": {
+      "type": "component",
+      "component": "navigation.footer-column",
+      "repeatable": true
+    },
+    "publishTime": {
+      "type": "datetime"
+    }
+  }
+}

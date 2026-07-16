@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_page_section_article_grids",
+  "info": {
+    "displayName": "section-article-grid"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "articles": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::article.article"
+    }
+  },
+  "config": {}
+}

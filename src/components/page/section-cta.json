@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_page_section_ctas",
+  "info": {
+    "displayName": "section-cta"
+  },
+  "options": {},
+  "attributes": {
+    "cta": {
+      "type": "component",
+      "component": "shared.cta-block",
+      "repeatable": false
+    }
+  },
+  "config": {}
+}
