@@ -4,151 +4,114 @@
   "info": {
     "singularName": "product",
     "pluralName": "products",
-    "displayName": "product"
+    "displayName": "Product"
   },
   "options": {
     "draftAndPublish": true
   },
-  "pluginOptions": {},
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
   "attributes": {
-    "name": {
-      "type": "string",
-      "required": true
+    "site_setting": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::site-setting.site-setting",
+      "inversedBy": "products"
     },
-    "slug": {
-      "type": "uid",
-      "targetField": "name",
-      "required": true
+    "category": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::category.category",
+      "inversedBy": "products"
     },
     "model": {
       "type": "string",
-      "required": true,
-      "unique": true
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
-    "sku": {
+    "name": {
       "type": "string",
-      "required": false,
-      "unique": true
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
-    "sites": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::site.site",
-      "inversedBy": "products"
+    "slug": {
+      "type": "uid",
+      "targetField": "model"
     },
-    "brands": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::brand.brand",
-      "inversedBy": "products"
+    "isPick": {
+      "type": "boolean",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "default": false
     },
-    "productFamilies": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::product-family.product-family",
-      "inversedBy": "products"
-    },
-    "productSeries": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::product-sery.product-sery",
-      "inversedBy": "products"
-    },
-    "shortDescription": {
-      "type": "text"
-    },
-    "longDescription": {
-      "type": "richtext"
-    },
-    "designPhilosophy": {
-      "type": "richtext"
-    },
-    "advantages": {
-      "type": "component",
-      "component": "shared.advantage",
-      "repeatable": true
+    "isAllPick": {
+      "type": "boolean",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "default": false
     },
     "badges": {
-      "type": "component",
-      "component": "shared.badge",
-      "repeatable": true
-    },
-    "specifications": {
-      "type": "component",
-      "component": "shared.specification",
-      "repeatable": true
-    },
-    "comparisonTable": {
-      "type": "component",
-      "component": "product.comparison-row",
-      "repeatable": true
-    },
-    "heroImage": {
-      "type": "media",
-      "multiple": false,
-      "allowedTypes": [
-        "images"
+      "type": "enumeration",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "enum": [
+        "New",
+        "Hot"
       ]
     },
-    "gallery": {
-      "type": "media",
-      "multiple": true,
-      "allowedTypes": [
-        "images"
-      ]
-    },
-    "installationImages": {
-      "type": "media",
-      "multiple": true,
-      "allowedTypes": [
-        "images"
-      ]
-    },
-    "recommendedPairing": {
+    "features": {
       "type": "component",
-      "component": "product.pairing",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "shared.item-feature",
       "repeatable": true
     },
-    "commonMistakes": {
+    "images": {
       "type": "component",
-      "component": "product.common-mistake",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "shared.images",
       "repeatable": true
     },
-    "aiContent": {
+    "spec_groups": {
       "type": "component",
-      "component": "shared.ai-content",
-      "repeatable": false
-    },
-    "engineeringNotes": {
-      "type": "component",
-      "component": "shared.engineering-note",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "product.spec-group",
       "repeatable": true
     },
-    "seo": {
-      "type": "component",
-      "component": "seo.meta",
-      "repeatable": false
-    },
-    "isFeatured": {
-      "type": "boolean",
-      "default": false
-    },
-    "isNew": {
-      "type": "boolean",
-      "default": false
-    },
-    "sortOrder": {
-      "type": "integer",
-      "default": 0
-    },
-    "publishTime": {
-      "type": "datetime"
-    },
-    "technologies": {
+    "downloads": {
       "type": "relation",
       "relation": "manyToMany",
-      "target": "api::technology.technology",
-      "mappedBy": "relatedProducts"
+      "target": "api::download.download",
+      "mappedBy": "products"
     },
     "applications": {
       "type": "relation",
@@ -156,88 +119,33 @@
       "target": "api::application.application",
       "mappedBy": "products"
     },
-    "industries": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::industry.industry",
-      "mappedBy": "products"
-    },
-    "articles": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::article.article",
-      "mappedBy": "relatedProducts"
-    },
-    "videos": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::video.video",
-      "mappedBy": "relatedProducts"
-    },
-    "faqs": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::faq.faq",
-      "mappedBy": "relatedProducts"
-    },
-    "accessories": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::accessory.accessory",
-      "mappedBy": "compatibleProducts"
-    },
-    "downloads": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::download.download",
-      "mappedBy": "relatedProducts"
-    },
-    "certifications": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::certification.certification",
-      "mappedBy": "relatedProducts"
-    },
-    "form_submissions": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::form-submission.form-submission",
-      "mappedBy": "products"
-    },
-    "tags": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::tag.tag",
-      "mappedBy": "relatedProducts"
-    },
-    "lightingEffects": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::lighting-effect.lighting-effect",
-      "mappedBy": "products"
-    },
-    "keyFeatures": {
+    "seo": {
       "type": "component",
-      "component": "shared.feature",
-      "repeatable": true
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "shared.seo-meta",
+      "repeatable": false
+    },
+    "inquiries": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::inquiry.inquiry",
+      "inversedBy": "products"
     },
     "products": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::product.product",
-      "inversedBy": "relatedProducts"
+      "inversedBy": "related_products"
     },
-    "relatedProducts": {
+    "related_products": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::product.product",
       "mappedBy": "products"
-    },
-    "projects": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::project.project",
-      "inversedBy": "products"
     }
   }
 }

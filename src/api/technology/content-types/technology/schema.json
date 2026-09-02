@@ -4,133 +4,205 @@
   "info": {
     "singularName": "technology",
     "pluralName": "technologies",
-    "displayName": "technology"
+    "displayName": "TechnologyPage"
   },
   "options": {
     "draftAndPublish": true
   },
-  "pluginOptions": {},
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
   "attributes": {
-    "name": {
-      "type": "string",
-      "required": true
-    },
-    "slug": {
-      "type": "uid",
-      "targetField": "name",
-      "required": true
-    },
-    "sites": {
+    "site_setting": {
       "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::site.site",
-      "inversedBy": "technologies"
+      "relation": "oneToOne",
+      "target": "api::site-setting.site-setting",
+      "mappedBy": "technology"
     },
-    "shortDescription": {
-      "type": "text"
-    },
-    "longDescription": {
-      "type": "richtext"
-    },
-    "heroImage": {
-      "type": "media",
-      "multiple": false,
-      "allowedTypes": [
-        "images"
-      ]
-    },
-    "icon": {
-      "type": "media",
-      "multiple": false,
-      "allowedTypes": [
-        "images"
-      ]
-    },
-    "howItWorks": {
-      "type": "richtext"
-    },
-    "advantages": {
+    "hero": {
       "type": "component",
-      "component": "shared.advantage",
-      "repeatable": true
-    },
-    "comparisonTable": {
-      "type": "component",
-      "component": "product.comparison-row",
-      "repeatable": true
-    },
-    "relatedProducts": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::product.product",
-      "inversedBy": "technologies"
-    },
-    "productFamilies": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::product-family.product-family",
-      "inversedBy": "technologies"
-    },
-    "productSeries": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::product-sery.product-sery",
-      "inversedBy": "technologies"
-    },
-    "aiContent": {
-      "type": "component",
-      "component": "shared.ai-content",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "page.hero",
       "repeatable": false
     },
-    "seo": {
-      "type": "component",
-      "component": "seo.meta",
-      "repeatable": false
+    "intro": {
+      "type": "text",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
-    "publishTime": {
-      "type": "datetime"
+    "Technology": {
+      "type": "dynamiczone",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "components": [
+        "shared.item-feature",
+        "page.stats",
+        "page.features",
+        "shared.tag-item"
+      ]
     },
-    "relatedArticles": {
+    "EngineeringPrinciples": {
+      "type": "dynamiczone",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "components": [
+        "page.features",
+        "shared.item-feature",
+        "shared.tag-item"
+      ]
+    },
+    "IPRatings": {
+      "type": "dynamiczone",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "components": [
+        "shared.item-feature",
+        "page.stats",
+        "page.features",
+        "page.ip-features",
+        "shared.tag-item"
+      ]
+    },
+    "Manufacturing": {
+      "type": "dynamiczone",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "components": [
+        "shared.item-feature",
+        "page.features",
+        "shared.tag-item"
+      ]
+    },
+    "Certifications": {
+      "type": "dynamiczone",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "components": [
+        "shared.item-feature",
+        "page.certification-item",
+        "shared.tag-item"
+      ]
+    },
+    "SeriesComparison": {
+      "type": "dynamiczone",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "components": [
+        "shared.item-feature",
+        "page.series-specifications",
+        "shared.tag-item"
+      ]
+    },
+    "Photometric": {
+      "type": "dynamiczone",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "components": [
+        "shared.item-feature",
+        "page.image-title",
+        "shared.tag-item"
+      ]
+    },
+    "Materials": {
+      "type": "dynamiczone",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "components": [
+        "shared.item-feature",
+        "page.image-title",
+        "shared.tag-item"
+      ]
+    },
+    "Electrical_Mechanical": {
+      "type": "dynamiczone",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "components": [
+        "shared.item-feature",
+        "shared.tag-item",
+        "page.ip-features"
+      ]
+    },
+    "Downloads": {
+      "type": "dynamiczone",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "components": [
+        "shared.item-feature",
+        "shared.tag-item"
+      ]
+    },
+    "relatedDownload": {
       "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::article.article",
-      "mappedBy": "relatedTechnologies"
-    },
-    "videos": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::video.video",
-      "mappedBy": "relatedTechnologies"
-    },
-    "relatedFaqs": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::faq.faq",
-      "inversedBy": "relatedTechnologies"
-    },
-    "downloads": {
-      "type": "relation",
-      "relation": "manyToMany",
+      "relation": "oneToMany",
       "target": "api::download.download",
-      "mappedBy": "relatedTechnologies"
+      "mappedBy": "technology"
     },
-    "relatedTaqs": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::tag.tag",
-      "mappedBy": "relatedTechnologies"
+    "FAQ": {
+      "type": "dynamiczone",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "components": [
+        "shared.item-feature",
+        "shared.ip-features",
+        "shared.tag-item",
+        "page.features"
+      ]
     },
-    "lightingEffects": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::lighting-effect.lighting-effect",
-      "mappedBy": "technologies"
-    },
-    "applications": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::application.application",
-      "mappedBy": "technologies"
+    "EngineeringSupport": {
+      "type": "dynamiczone",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "components": [
+        "shared.item-feature",
+        "shared.btn",
+        "shared.tag-item"
+      ]
     }
   }
 }

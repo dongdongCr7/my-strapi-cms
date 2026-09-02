@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_page_stats",
+  "info": {
+    "displayName": "stats"
+  },
+  "options": {},
+  "attributes": {
+    "stat": {
+      "type": "component",
+      "component": "home.hero-stat",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

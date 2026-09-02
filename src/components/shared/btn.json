@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_shared_btns",
+  "info": {
+    "displayName": "btn"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "link": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

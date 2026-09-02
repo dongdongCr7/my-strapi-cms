@@ -1,0 +1,1600 @@
+﻿{
+    "components":  {
+                       "page\\stats":  {
+                                           "collectionName":  "components_page_stats",
+                                           "info":  {
+                                                        "displayName":  "stats"
+                                                    },
+                                           "options":  {
+
+                                                       },
+                                           "attributes":  {
+                                                              "stat":  {
+                                                                           "type":  "component",
+                                                                           "component":  "home.hero-stat",
+                                                                           "repeatable":  true
+                                                                       }
+                                                          },
+                                           "config":  {
+
+                                                      }
+                                       },
+                       "page\\hero":  {
+                                          "collectionName":  "components_page_heroes",
+                                          "info":  {
+                                                       "displayName":  "hero"
+                                                   },
+                                          "options":  {
+
+                                                      },
+                                          "attributes":  {
+                                                             "heroTitle":  {
+                                                                               "type":  "string"
+                                                                           },
+                                                             "heroDescription":  {
+                                                                                     "type":  "text"
+                                                                                 },
+                                                             "heroImage":  {
+                                                                               "type":  "media",
+                                                                               "multiple":  false,
+                                                                               "allowedTypes":  [
+                                                                                                    "images"
+                                                                                                ]
+                                                                           },
+                                                             "heroImageAlt":  {
+                                                                                  "type":  "string"
+                                                                              }
+                                                         },
+                                          "config":  {
+
+                                                     }
+                                      },
+                       "footer\\footer-contact-info":  {
+                                                           "collectionName":  "components_footer_footer_contact_infos",
+                                                           "info":  {
+                                                                        "displayName":  "footer-contact-info"
+                                                                    },
+                                                           "options":  {
+
+                                                                       },
+                                                           "attributes":  {
+                                                                              "address":  {
+                                                                                              "type":  "string"
+                                                                                          },
+                                                                              "phone":  {
+                                                                                            "type":  "string"
+                                                                                        },
+                                                                              "email":  {
+                                                                                            "type":  "string"
+                                                                                        }
+                                                                          },
+                                                           "config":  {
+
+                                                                      }
+                                                       },
+                       "page\\ip-features":  {
+                                                 "collectionName":  "components_page_ip_features",
+                                                 "info":  {
+                                                              "displayName":  "infoes"
+                                                          },
+                                                 "options":  {
+
+                                                             },
+                                                 "attributes":  {
+                                                                    "info":  {
+                                                                                 "type":  "component",
+                                                                                 "component":  "shared.ip-features",
+                                                                                 "repeatable":  true
+                                                                             }
+                                                                },
+                                                 "config":  {
+
+                                                            }
+                                             },
+                       "page\\features":  {
+                                              "collectionName":  "components_page_features",
+                                              "info":  {
+                                                           "displayName":  "features"
+                                                       },
+                                              "options":  {
+
+                                                          },
+                                              "attributes":  {
+                                                                 "feature":  {
+                                                                                 "type":  "component",
+                                                                                 "component":  "shared.item-feature",
+                                                                                 "repeatable":  true
+                                                                             }
+                                                             },
+                                              "config":  {
+
+                                                         }
+                                          },
+                       "shared\\seo-meta":  {
+                                                "collectionName":  "components_shared_seo_metas",
+                                                "info":  {
+                                                             "displayName":  "seo-meta"
+                                                         },
+                                                "options":  {
+
+                                                            },
+                                                "attributes":  {
+                                                                   "metaTitle":  {
+                                                                                     "type":  "string"
+                                                                                 },
+                                                                   "metaDescription":  {
+                                                                                           "type":  "text"
+                                                                                       },
+                                                                   "keywords":  {
+                                                                                    "type":  "string"
+                                                                                },
+                                                                   "ogImage":  {
+                                                                                   "type":  "media",
+                                                                                   "multiple":  false,
+                                                                                   "allowedTypes":  [
+                                                                                                        "images"
+                                                                                                    ]
+                                                                               },
+                                                                   "ogImageAlt":  {
+                                                                                      "type":  "string"
+                                                                                  },
+                                                                   "canonicalUrl":  {
+                                                                                        "type":  "string"
+                                                                                    }
+                                                               },
+                                                "config":  {
+
+                                                           }
+                                            },
+                       "home\\trust-bar-item":  {
+                                                    "collectionName":  "components_home_trust_bar_items",
+                                                    "info":  {
+                                                                 "displayName":  "trust-bar-item"
+                                                             },
+                                                    "options":  {
+
+                                                                },
+                                                    "attributes":  {
+                                                                       "icon":  {
+                                                                                    "type":  "string"
+                                                                                },
+                                                                       "label":  {
+                                                                                     "type":  "string"
+                                                                                 },
+                                                                       "value":  {
+                                                                                     "type":  "string"
+                                                                                 }
+                                                                   },
+                                                    "config":  {
+
+                                                               }
+                                                },
+                       "home\\hero-stat":  {
+                                               "collectionName":  "components_home_hero_stats",
+                                               "info":  {
+                                                            "displayName":  "hero-stat"
+                                                        },
+                                               "options":  {
+
+                                                           },
+                                               "attributes":  {
+                                                                  "value":  {
+                                                                                "type":  "string"
+                                                                            },
+                                                                  "label":  {
+                                                                                "type":  "string"
+                                                                            }
+                                                              },
+                                               "config":  {
+
+                                                          }
+                                           },
+                       "shared\\nav-link-child":  {
+                                                      "collectionName":  "components_shared_nav_link_children",
+                                                      "info":  {
+                                                                   "displayName":  "nav-link-child"
+                                                               },
+                                                      "options":  {
+
+                                                                  },
+                                                      "attributes":  {
+                                                                         "label":  {
+                                                                                       "type":  "string",
+                                                                                       "required":  true
+                                                                                   },
+                                                                         "href":  {
+                                                                                      "type":  "string",
+                                                                                      "required":  true
+                                                                                  },
+                                                                         "description":  {
+                                                                                             "type":  "text"
+                                                                                         }
+                                                                     },
+                                                      "config":  {
+
+                                                                 }
+                                                  },
+                       "footer\\footer-column":  {
+                                                     "collectionName":  "components_footer_footer_columns",
+                                                     "info":  {
+                                                                  "displayName":  "footer-column"
+                                                              },
+                                                     "options":  {
+
+                                                                 },
+                                                     "attributes":  {
+                                                                        "title":  {
+                                                                                      "type":  "string"
+                                                                                  },
+                                                                        "links":  {
+                                                                                      "type":  "component",
+                                                                                      "component":  "shared.nav-link",
+                                                                                      "repeatable":  true
+                                                                                  }
+                                                                    },
+                                                     "config":  {
+
+                                                                }
+                                                 },
+                       "product\\product-specs":  {
+                                                      "collectionName":  "components_product_product_specs",
+                                                      "info":  {
+                                                                   "displayName":  "specs"
+                                                               },
+                                                      "options":  {
+
+                                                                  },
+                                                      "attributes":  {
+                                                                         "name":  {
+                                                                                      "type":  "string",
+                                                                                      "required":  true
+                                                                                  },
+                                                                         "isKey":  {
+                                                                                       "type":  "boolean",
+                                                                                       "default":  false
+                                                                                   },
+                                                                         "value":  {
+                                                                                       "type":  "string"
+                                                                                   }
+                                                                     },
+                                                      "config":  {
+
+                                                                 }
+                                                  },
+                       "shared\\download-item":  {
+                                                     "collectionName":  "components_shared_download_items",
+                                                     "info":  {
+                                                                  "displayName":  "download-item"
+                                                              },
+                                                     "options":  {
+
+                                                                 },
+                                                     "attributes":  {
+                                                                        "name":  {
+                                                                                     "type":  "string"
+                                                                                 },
+                                                                        "title":  {
+                                                                                      "type":  "string"
+                                                                                  },
+                                                                        "file":  {
+                                                                                     "type":  "media",
+                                                                                     "multiple":  false,
+                                                                                     "allowedTypes":  [
+                                                                                                          "images",
+                                                                                                          "files",
+                                                                                                          "videos",
+                                                                                                          "audios"
+                                                                                                      ]
+                                                                                 }
+                                                                    },
+                                                     "config":  {
+
+                                                                }
+                                                 },
+                       "shared\\images":  {
+                                              "collectionName":  "components_shared_images",
+                                              "info":  {
+                                                           "displayName":  "images"
+                                                       },
+                                              "options":  {
+
+                                                          },
+                                              "attributes":  {
+                                                                 "image":  {
+                                                                               "type":  "media",
+                                                                               "multiple":  false,
+                                                                               "allowedTypes":  [
+                                                                                                    "images"
+                                                                                                ]
+                                                                           },
+                                                                 "isKey":  {
+                                                                               "type":  "boolean",
+                                                                               "default":  false
+                                                                           },
+                                                                 "imageAlt":  {
+                                                                                  "type":  "string"
+                                                                              }
+                                                             },
+                                              "config":  {
+
+                                                         }
+                                          },
+                       "shared\\ip-features":  {
+                                                   "collectionName":  "components_shared_ip_features",
+                                                   "info":  {
+                                                                "displayName":  "info鈥慽tem"
+                                                            },
+                                                   "options":  {
+
+                                                               },
+                                                   "attributes":  {
+                                                                      "name":  {
+                                                                                   "type":  "string"
+                                                                               },
+                                                                      "title":  {
+                                                                                    "type":  "string"
+                                                                                },
+                                                                      "description":  {
+                                                                                          "type":  "text"
+                                                                                      }
+                                                                  },
+                                                   "config":  {
+
+                                                              }
+                                               },
+                       "shared\\btn":  {
+                                           "collectionName":  "components_shared_btns",
+                                           "info":  {
+                                                        "displayName":  "btn"
+                                                    },
+                                           "options":  {
+
+                                                       },
+                                           "attributes":  {
+                                                              "name":  {
+                                                                           "type":  "string"
+                                                                       },
+                                                              "link":  {
+                                                                           "type":  "string"
+                                                                       }
+                                                          },
+                                           "config":  {
+
+                                                      }
+                                       },
+                       "page\\series-specifications":  {
+                                                           "collectionName":  "components_page_series_specifications",
+                                                           "info":  {
+                                                                        "displayName":  "seriesSpecifications"
+                                                                    },
+                                                           "options":  {
+
+                                                                       },
+                                                           "attributes":  {
+                                                                              "name":  {
+                                                                                           "type":  "string"
+                                                                                       },
+                                                                              "tag":  {
+                                                                                          "type":  "enumeration",
+                                                                                          "enum":  [
+                                                                                                       "standard",
+                                                                                                       "premium",
+                                                                                                       "ultra"
+                                                                                                   ]
+                                                                                      },
+                                                                              "Chip_density":  {
+                                                                                                   "type":  "string"
+                                                                                               },
+                                                                              "CCT_range":  {
+                                                                                                "type":  "string"
+                                                                                            },
+                                                                              "CRI":  {
+                                                                                          "type":  "string"
+                                                                                      },
+                                                                              "Output":  {
+                                                                                             "type":  "string"
+                                                                                         },
+                                                                              "IP_rating":  {
+                                                                                                "type":  "string"
+                                                                                            },
+                                                                              "Cutting_length":  {
+                                                                                                     "type":  "string"
+                                                                                                 },
+                                                                              "PCB_width":  {
+                                                                                                "type":  "string"
+                                                                                            },
+                                                                              "Voltage":  {
+                                                                                              "type":  "string"
+                                                                                          },
+                                                                              "Typical_application":  {
+                                                                                                          "type":  "string"
+                                                                                                      }
+                                                                          },
+                                                           "config":  {
+
+                                                                      }
+                                                       },
+                       "page\\certification-item":  {
+                                                        "collectionName":  "components_page_certification_items",
+                                                        "info":  {
+                                                                     "displayName":  "certification-item"
+                                                                 },
+                                                        "options":  {
+
+                                                                    },
+                                                        "attributes":  {
+                                                                           "name":  {
+                                                                                        "type":  "string"
+                                                                                    },
+                                                                           "image":  {
+                                                                                         "type":  "media",
+                                                                                         "multiple":  false,
+                                                                                         "allowedTypes":  [
+                                                                                                              "images"
+                                                                                                          ]
+                                                                                     },
+                                                                           "imageAlt":  {
+                                                                                            "type":  "string"
+                                                                                        },
+                                                                           "title":  {
+                                                                                         "type":  "string"
+                                                                                     },
+                                                                           "description":  {
+                                                                                               "type":  "text"
+                                                                                           }
+                                                                       },
+                                                        "config":  {
+
+                                                                   }
+                                                    },
+                       "shared\\nav-link":  {
+                                                "collectionName":  "components_shared_nav_links",
+                                                "info":  {
+                                                             "displayName":  "nav-link"
+                                                         },
+                                                "options":  {
+
+                                                            },
+                                                "attributes":  {
+                                                                   "label":  {
+                                                                                 "type":  "string",
+                                                                                 "required":  true
+                                                                             },
+                                                                   "href":  {
+                                                                                "type":  "string",
+                                                                                "required":  true
+                                                                            },
+                                                                   "children":  {
+                                                                                    "type":  "component",
+                                                                                    "component":  "shared.nav-link-child",
+                                                                                    "repeatable":  true
+                                                                                }
+                                                               },
+                                                "config":  {
+
+                                                           }
+                                            },
+                       "page\\download":  {
+                                              "collectionName":  "components_page_downloads",
+                                              "info":  {
+                                                           "displayName":  "download"
+                                                       },
+                                              "options":  {
+
+                                                          },
+                                              "attributes":  {
+                                                                 "name":  {
+                                                                              "type":  "string"
+                                                                          },
+                                                                 "description":  {
+                                                                                     "type":  "text"
+                                                                                 },
+                                                                 "downloads":  {
+                                                                                   "type":  "component",
+                                                                                   "component":  "shared.download-item",
+                                                                                   "repeatable":  true
+                                                                               }
+                                                             },
+                                              "config":  {
+
+                                                         }
+                                          },
+                       "page\\image-title":  {
+                                                 "collectionName":  "components_page_image_titles",
+                                                 "info":  {
+                                                              "displayName":  "media鈥慶ard鈥慽tem"
+                                                          },
+                                                 "options":  {
+
+                                                             },
+                                                 "attributes":  {
+                                                                    "name":  {
+                                                                                 "type":  "string"
+                                                                             },
+                                                                    "image":  {
+                                                                                  "type":  "media",
+                                                                                  "multiple":  true,
+                                                                                  "allowedTypes":  [
+                                                                                                       "images"
+                                                                                                   ]
+                                                                              },
+                                                                    "imageAlt":  {
+                                                                                     "type":  "string"
+                                                                                 },
+                                                                    "feature":  {
+                                                                                    "type":  "component",
+                                                                                    "component":  "shared.item-feature",
+                                                                                    "repeatable":  true
+                                                                                }
+                                                                },
+                                                 "config":  {
+
+                                                            }
+                                             },
+                       "shared\\item-feature":  {
+                                                    "collectionName":  "components_shared_item_features",
+                                                    "info":  {
+                                                                 "displayName":  "text鈥慽tem"
+                                                             },
+                                                    "options":  {
+
+                                                                },
+                                                    "attributes":  {
+                                                                       "title":  {
+                                                                                     "type":  "string"
+                                                                                 },
+                                                                       "description":  {
+                                                                                           "type":  "text"
+                                                                                       }
+                                                                   },
+                                                    "config":  {
+
+                                                               }
+                                                },
+                       "shared\\tag-item":  {
+                                                "collectionName":  "components_shared_tag_items",
+                                                "info":  {
+                                                             "displayName":  "tag-item"
+                                                         },
+                                                "options":  {
+
+                                                            },
+                                                "attributes":  {
+                                                                   "label":  {
+                                                                                 "type":  "string",
+                                                                                 "required":  true
+                                                                             }
+                                                               },
+                                                "config":  {
+
+                                                           }
+                                            },
+                       "footer\\social-link":  {
+                                                   "collectionName":  "components_footer_social_links",
+                                                   "info":  {
+                                                                "displayName":  "social-link"
+                                                            },
+                                                   "options":  {
+
+                                                               },
+                                                   "attributes":  {
+                                                                      "platform":  {
+                                                                                       "type":  "enumeration",
+                                                                                       "enum":  [
+                                                                                                    "linkedin",
+                                                                                                    "twitter",
+                                                                                                    "youtube",
+                                                                                                    "facebook"
+                                                                                                ]
+                                                                                   },
+                                                                      "url":  {
+                                                                                  "type":  "string"
+                                                                              }
+                                                                  },
+                                                   "config":  {
+
+                                                              }
+                                               },
+                       "product\\spec-group":  {
+                                                   "collectionName":  "components_product_spec_groups",
+                                                   "info":  {
+                                                                "displayName":  "spec-group"
+                                                            },
+                                                   "options":  {
+
+                                                               },
+                                                   "attributes":  {
+                                                                      "name":  {
+                                                                                   "type":  "string"
+                                                                               },
+                                                                      "spec":  {
+                                                                                   "type":  "component",
+                                                                                   "component":  "product.product-specs",
+                                                                                   "repeatable":  true
+                                                                               }
+                                                                  },
+                                                   "config":  {
+
+                                                              }
+                                               }
+                   },
+    "exportedAt":  "2026-08-26T08:59:27.8463299+08:00",
+    "contentTypes":  {
+                         "application\\application":  {
+                                                          "kind":  "collectionType",
+                                                          "collectionName":  "applications",
+                                                          "info":  {
+                                                                       "singularName":  "application",
+                                                                       "pluralName":  "applications",
+                                                                       "displayName":  "Application"
+                                                                   },
+                                                          "options":  {
+                                                                          "draftAndPublish":  true
+                                                                      },
+                                                          "pluginOptions":  {
+
+                                                                            },
+                                                          "attributes":  {
+                                                                             "site_setting":  {
+                                                                                                  "type":  "relation",
+                                                                                                  "relation":  "manyToOne",
+                                                                                                  "target":  "api::site-setting.site-setting",
+                                                                                                  "inversedBy":  "applications"
+                                                                                              },
+                                                                             "name":  {
+                                                                                          "type":  "string"
+                                                                                      },
+                                                                             "slug":  {
+                                                                                          "type":  "uid",
+                                                                                          "targetField":  "name"
+                                                                                      },
+                                                                             "description":  {
+                                                                                                 "type":  "text"
+                                                                                             },
+                                                                             "images":  {
+                                                                                            "type":  "component",
+                                                                                            "component":  "shared.images",
+                                                                                            "repeatable":  true
+                                                                                        },
+                                                                             "trust_bar":  {
+                                                                                               "type":  "component",
+                                                                                               "component":  "home.trust-bar-item",
+                                                                                               "repeatable":  true
+                                                                                           },
+                                                                             "longDescription":  {
+                                                                                                     "type":  "text"
+                                                                                                 },
+                                                                             "tags":  {
+                                                                                          "type":  "component",
+                                                                                          "component":  "shared.tag-item",
+                                                                                          "repeatable":  true
+                                                                                      },
+                                                                             "features":  {
+                                                                                              "type":  "component",
+                                                                                              "component":  "shared.item-feature",
+                                                                                              "repeatable":  true
+                                                                                          },
+                                                                             "applications":  {
+                                                                                                  "type":  "relation",
+                                                                                                  "relation":  "manyToMany",
+                                                                                                  "target":  "api::application.application",
+                                                                                                  "inversedBy":  "relatedApplication"
+                                                                                              },
+                                                                             "relatedApplication":  {
+                                                                                                        "type":  "relation",
+                                                                                                        "relation":  "manyToMany",
+                                                                                                        "target":  "api::application.application",
+                                                                                                        "mappedBy":  "applications"
+                                                                                                    },
+                                                                             "products":  {
+                                                                                              "type":  "relation",
+                                                                                              "relation":  "manyToMany",
+                                                                                              "target":  "api::product.product",
+                                                                                              "inversedBy":  "applications"
+                                                                                          },
+                                                                             "results":  {
+                                                                                             "type":  "component",
+                                                                                             "component":  "home.hero-stat",
+                                                                                             "repeatable":  true
+                                                                                         },
+                                                                             "CTA":  {
+                                                                                         "type":  "dynamiczone",
+                                                                                         "components":  [
+                                                                                                            "shared.item-feature",
+                                                                                                            "shared.btn"
+                                                                                                        ]
+                                                                                     },
+                                                                             "seo":  {
+                                                                                         "type":  "component",
+                                                                                         "component":  "shared.seo-meta",
+                                                                                         "repeatable":  false
+                                                                                     },
+                                                                             "category":  {
+                                                                                              "type":  "relation",
+                                                                                              "relation":  "manyToOne",
+                                                                                              "target":  "api::category.category",
+                                                                                              "inversedBy":  "applications"
+                                                                                          },
+                                                                             "application_page":  {
+                                                                                                      "type":  "relation",
+                                                                                                      "relation":  "manyToOne",
+                                                                                                      "target":  "api::application-page.application-page",
+                                                                                                      "inversedBy":  "applications"
+                                                                                                  }
+                                                                         }
+                                                      },
+                         "category\\category":  {
+                                                    "kind":  "collectionType",
+                                                    "collectionName":  "categories",
+                                                    "info":  {
+                                                                 "singularName":  "category",
+                                                                 "pluralName":  "categories",
+                                                                 "displayName":  "Category"
+                                                             },
+                                                    "options":  {
+                                                                    "draftAndPublish":  true
+                                                                },
+                                                    "pluginOptions":  {
+
+                                                                      },
+                                                    "attributes":  {
+                                                                       "site":  {
+                                                                                    "type":  "enumeration",
+                                                                                    "enum":  [
+                                                                                                 "cobflex"
+                                                                                             ]
+                                                                                },
+                                                                       "site_setting":  {
+                                                                                            "type":  "relation",
+                                                                                            "relation":  "manyToOne",
+                                                                                            "target":  "api::site-setting.site-setting",
+                                                                                            "inversedBy":  "categories"
+                                                                                        },
+                                                                       "productOrApplication":  {
+                                                                                                    "type":  "enumeration",
+                                                                                                    "enum":  [
+                                                                                                                 "product",
+                                                                                                                 "application"
+                                                                                                             ]
+                                                                                                },
+                                                                       "name":  {
+                                                                                    "type":  "string"
+                                                                                },
+                                                                       "slug":  {
+                                                                                    "type":  "uid",
+                                                                                    "targetField":  "name"
+                                                                                },
+                                                                       "description":  {
+                                                                                           "type":  "text"
+                                                                                       },
+                                                                       "image":  {
+                                                                                     "type":  "media",
+                                                                                     "multiple":  false,
+                                                                                     "allowedTypes":  [
+                                                                                                          "images"
+                                                                                                      ]
+                                                                                 },
+                                                                       "imageAlt":  {
+                                                                                        "type":  "string"
+                                                                                    },
+                                                                       "order":  {
+                                                                                     "type":  "integer"
+                                                                                 },
+                                                                       "products":  {
+                                                                                        "type":  "relation",
+                                                                                        "relation":  "oneToMany",
+                                                                                        "target":  "api::product.product",
+                                                                                        "mappedBy":  "category"
+                                                                                    },
+                                                                       "seo":  {
+                                                                                   "type":  "component",
+                                                                                   "component":  "shared.seo-meta",
+                                                                                   "repeatable":  false
+                                                                               },
+                                                                       "product_page":  {
+                                                                                            "type":  "relation",
+                                                                                            "relation":  "manyToOne",
+                                                                                            "target":  "api::product-page.product-page",
+                                                                                            "inversedBy":  "categories"
+                                                                                        },
+                                                                       "applications":  {
+                                                                                            "type":  "relation",
+                                                                                            "relation":  "oneToMany",
+                                                                                            "target":  "api::application.application",
+                                                                                            "mappedBy":  "category"
+                                                                                        },
+                                                                       "over_view_page":  {
+                                                                                              "type":  "relation",
+                                                                                              "relation":  "manyToOne",
+                                                                                              "target":  "api::over-view.over-view",
+                                                                                              "inversedBy":  "categories"
+                                                                                          }
+                                                                   }
+                                                },
+                         "inquiry\\inquiry":  {
+                                                  "kind":  "collectionType",
+                                                  "collectionName":  "inquiries",
+                                                  "info":  {
+                                                               "singularName":  "inquiry",
+                                                               "pluralName":  "inquiries",
+                                                               "displayName":  "Inquiry"
+                                                           },
+                                                  "options":  {
+                                                                  "draftAndPublish":  false
+                                                              },
+                                                  "pluginOptions":  {
+
+                                                                    },
+                                                  "attributes":  {
+                                                                     "firstName":  {
+                                                                                       "type":  "string"
+                                                                                   },
+                                                                     "lastName":  {
+                                                                                      "type":  "string"
+                                                                                  },
+                                                                     "email":  {
+                                                                                   "type":  "string"
+                                                                               },
+                                                                     "companyName":  {
+                                                                                         "type":  "string"
+                                                                                     },
+                                                                     "phone":  {
+                                                                                   "type":  "string"
+                                                                               },
+                                                                     "country":  {
+                                                                                     "type":  "string"
+                                                                                 },
+                                                                     "products":  {
+                                                                                      "type":  "relation",
+                                                                                      "relation":  "manyToMany",
+                                                                                      "target":  "api::product.product",
+                                                                                      "mappedBy":  "inquiries"
+                                                                                  },
+                                                                     "productSku":  {
+                                                                                        "type":  "string"
+                                                                                    },
+                                                                     "message":  {
+                                                                                     "type":  "text"
+                                                                                 },
+                                                                     "attachment":  {
+                                                                                        "type":  "media",
+                                                                                        "multiple":  true,
+                                                                                        "allowedTypes":  [
+                                                                                                             "images",
+                                                                                                             "files",
+                                                                                                             "videos",
+                                                                                                             "audios"
+                                                                                                         ]
+                                                                                    },
+                                                                     "sourceUrl":  {
+                                                                                       "type":  "string"
+                                                                                   }
+                                                                 }
+                                              },
+                         "product-page\\product-page":  {
+                                                            "kind":  "collectionType",
+                                                            "collectionName":  "product_pages",
+                                                            "info":  {
+                                                                         "singularName":  "product-page",
+                                                                         "pluralName":  "product-pages",
+                                                                         "displayName":  "ProductPage"
+                                                                     },
+                                                            "options":  {
+                                                                            "draftAndPublish":  true
+                                                                        },
+                                                            "pluginOptions":  {
+
+                                                                              },
+                                                            "attributes":  {
+                                                                               "site_setting":  {
+                                                                                                    "type":  "relation",
+                                                                                                    "relation":  "oneToOne",
+                                                                                                    "target":  "api::site-setting.site-setting",
+                                                                                                    "inversedBy":  "product_page"
+                                                                                                },
+                                                                               "hero":  {
+                                                                                            "type":  "component",
+                                                                                            "component":  "page.hero",
+                                                                                            "repeatable":  false
+                                                                                        },
+                                                                               "specs":  {
+                                                                                             "type":  "relation",
+                                                                                             "relation":  "oneToMany",
+                                                                                             "target":  "api::spec.spec",
+                                                                                             "mappedBy":  "product_page"
+                                                                                         },
+                                                                               "categories":  {
+                                                                                                  "type":  "relation",
+                                                                                                  "relation":  "oneToMany",
+                                                                                                  "target":  "api::category.category",
+                                                                                                  "mappedBy":  "product_page"
+                                                                                              },
+                                                                               "seo":  {
+                                                                                           "type":  "component",
+                                                                                           "component":  "shared.seo-meta",
+                                                                                           "repeatable":  false
+                                                                                       }
+                                                                           }
+                                                        },
+                         "spec\\spec":  {
+                                            "kind":  "collectionType",
+                                            "collectionName":  "specs",
+                                            "info":  {
+                                                         "singularName":  "spec",
+                                                         "pluralName":  "specs",
+                                                         "displayName":  "Spec"
+                                                     },
+                                            "options":  {
+                                                            "draftAndPublish":  true
+                                                        },
+                                            "pluginOptions":  {
+
+                                                              },
+                                            "attributes":  {
+                                                               "spec_group":  {
+                                                                                  "type":  "component",
+                                                                                  "component":  "product.spec-group",
+                                                                                  "repeatable":  true
+                                                                              },
+                                                               "product_page":  {
+                                                                                    "type":  "relation",
+                                                                                    "relation":  "manyToOne",
+                                                                                    "target":  "api::product-page.product-page",
+                                                                                    "inversedBy":  "specs"
+                                                                                }
+                                                           }
+                                        },
+                         "resourcy\\resourcy":  {
+                                                    "kind":  "collectionType",
+                                                    "collectionName":  "resourcies",
+                                                    "info":  {
+                                                                 "singularName":  "resourcy",
+                                                                 "pluralName":  "resourcies",
+                                                                 "displayName":  "ResourcyPage"
+                                                             },
+                                                    "options":  {
+                                                                    "draftAndPublish":  true
+                                                                },
+                                                    "pluginOptions":  {
+
+                                                                      },
+                                                    "attributes":  {
+                                                                       "site_setting":  {
+                                                                                            "type":  "relation",
+                                                                                            "relation":  "oneToOne",
+                                                                                            "target":  "api::site-setting.site-setting",
+                                                                                            "inversedBy":  "resourcy"
+                                                                                        },
+                                                                       "hero":  {
+                                                                                    "type":  "component",
+                                                                                    "component":  "page.hero",
+                                                                                    "repeatable":  false
+                                                                                },
+                                                                       "intro":  {
+                                                                                     "type":  "text"
+                                                                                 },
+                                                                       "note":  {
+                                                                                    "type":  "text"
+                                                                                },
+                                                                       "downloads":  {
+                                                                                         "type":  "relation",
+                                                                                         "relation":  "oneToMany",
+                                                                                         "target":  "api::download.download",
+                                                                                         "mappedBy":  "resourcy"
+                                                                                     },
+                                                                       "cta":  {
+                                                                                   "type":  "component",
+                                                                                   "component":  "shared.item-feature",
+                                                                                   "repeatable":  false
+                                                                               },
+                                                                       "cta_btn":  {
+                                                                                       "type":  "component",
+                                                                                       "component":  "shared.btn",
+                                                                                       "repeatable":  false
+                                                                                   },
+                                                                       "seo":  {
+                                                                                   "type":  "component",
+                                                                                   "component":  "shared.seo-meta",
+                                                                                   "repeatable":  false
+                                                                               }
+                                                                   }
+                                                },
+                         "contact-page\\contact-page":  {
+                                                            "kind":  "collectionType",
+                                                            "collectionName":  "contact_pages",
+                                                            "info":  {
+                                                                         "singularName":  "contact-page",
+                                                                         "pluralName":  "contact-pages",
+                                                                         "displayName":  "ContactPage"
+                                                                     },
+                                                            "options":  {
+                                                                            "draftAndPublish":  true
+                                                                        },
+                                                            "pluginOptions":  {
+
+                                                                              },
+                                                            "attributes":  {
+                                                                               "site_setting":  {
+                                                                                                    "type":  "relation",
+                                                                                                    "relation":  "oneToOne",
+                                                                                                    "target":  "api::site-setting.site-setting",
+                                                                                                    "inversedBy":  "contact_page"
+                                                                                                },
+                                                                               "hero":  {
+                                                                                            "type":  "component",
+                                                                                            "component":  "page.hero",
+                                                                                            "repeatable":  false
+                                                                                        },
+                                                                               "address":  {
+                                                                                               "type":  "string"
+                                                                                           },
+                                                                               "phone":  {
+                                                                                             "type":  "string"
+                                                                                         },
+                                                                               "email":  {
+                                                                                             "type":  "string"
+                                                                                         },
+                                                                               "working_hours":  {
+                                                                                                     "type":  "string"
+                                                                                                 },
+                                                                               "salesInfo":  {
+                                                                                                 "type":  "component",
+                                                                                                 "component":  "page.ip-features",
+                                                                                                 "repeatable":  false
+                                                                                             },
+                                                                               "inquiry":  {
+                                                                                               "type":  "component",
+                                                                                               "component":  "shared.item-feature",
+                                                                                               "repeatable":  false
+                                                                                           },
+                                                                               "inquiry_btn":  {
+                                                                                                   "type":  "component",
+                                                                                                   "component":  "shared.btn",
+                                                                                                   "repeatable":  false
+                                                                                               }
+                                                                           }
+                                                        },
+                         "site-setting\\site-setting":  {
+                                                            "kind":  "collectionType",
+                                                            "collectionName":  "site_settings",
+                                                            "info":  {
+                                                                         "singularName":  "site-setting",
+                                                                         "pluralName":  "site-settings",
+                                                                         "displayName":  "SiteSetting"
+                                                                     },
+                                                            "options":  {
+                                                                            "draftAndPublish":  true
+                                                                        },
+                                                            "pluginOptions":  {
+
+                                                                              },
+                                                            "attributes":  {
+                                                                               "site":  {
+                                                                                            "type":  "string"
+                                                                                        },
+                                                                               "brandName":  {
+                                                                                                 "type":  "string"
+                                                                                             },
+                                                                               "brandAccent":  {
+                                                                                                   "type":  "string"
+                                                                                               },
+                                                                               "brandSubline":  {
+                                                                                                    "type":  "string"
+                                                                                                },
+                                                                               "parentBrand":  {
+                                                                                                   "type":  "string"
+                                                                                               },
+                                                                               "parentBrandUrl":  {
+                                                                                                      "type":  "string"
+                                                                                                  },
+                                                                               "navLinks":  {
+                                                                                                "type":  "component",
+                                                                                                "component":  "shared.nav-link",
+                                                                                                "repeatable":  true
+                                                                                            },
+                                                                               "headerCtaText":  {
+                                                                                                     "type":  "string"
+                                                                                                 },
+                                                                               "headerCtaHref":  {
+                                                                                                     "type":  "string"
+                                                                                                 },
+                                                                               "footerDescription":  {
+                                                                                                         "type":  "text"
+                                                                                                     },
+                                                                               "footerColumns":  {
+                                                                                                     "type":  "component",
+                                                                                                     "component":  "footer.footer-column",
+                                                                                                     "repeatable":  true
+                                                                                                 },
+                                                                               "footerContact":  {
+                                                                                                     "type":  "component",
+                                                                                                     "component":  "footer.footer-contact-info",
+                                                                                                     "repeatable":  false
+                                                                                                 },
+                                                                               "newsletter":  {
+                                                                                                  "type":  "component",
+                                                                                                  "component":  "shared.item-feature",
+                                                                                                  "repeatable":  false
+                                                                                              },
+                                                                               "newsletterPlaceholder":  {
+                                                                                                             "type":  "string",
+                                                                                                             "default":  "Enter your email"
+                                                                                                         },
+                                                                               "newsletterButtonLabel":  {
+                                                                                                             "type":  "string",
+                                                                                                             "default":  "Subscribe"
+                                                                                                         },
+                                                                               "copyrightText":  {
+                                                                                                     "type":  "string"
+                                                                                                 },
+                                                                               "globalSeo":  {
+                                                                                                 "type":  "component",
+                                                                                                 "component":  "shared.seo-meta",
+                                                                                                 "repeatable":  false
+                                                                                             },
+                                                                               "favicon":  {
+                                                                                               "type":  "media",
+                                                                                               "multiple":  false,
+                                                                                               "allowedTypes":  [
+                                                                                                                    "images"
+                                                                                                                ]
+                                                                                           },
+                                                                               "categories":  {
+                                                                                                  "type":  "relation",
+                                                                                                  "relation":  "oneToMany",
+                                                                                                  "target":  "api::category.category",
+                                                                                                  "mappedBy":  "site_setting"
+                                                                                              },
+                                                                               "languages":  {
+                                                                                                 "type":  "json"
+                                                                                             },
+                                                                               "products":  {
+                                                                                                "type":  "relation",
+                                                                                                "relation":  "oneToMany",
+                                                                                                "target":  "api::product.product",
+                                                                                                "mappedBy":  "site_setting"
+                                                                                            },
+                                                                               "applications":  {
+                                                                                                    "type":  "relation",
+                                                                                                    "relation":  "oneToMany",
+                                                                                                    "target":  "api::application.application",
+                                                                                                    "mappedBy":  "site_setting"
+                                                                                                },
+                                                                               "technology":  {
+                                                                                                  "type":  "relation",
+                                                                                                  "relation":  "oneToOne",
+                                                                                                  "target":  "api::technology.technology",
+                                                                                                  "inversedBy":  "site_setting"
+                                                                                              },
+                                                                               "resourcy":  {
+                                                                                                "type":  "relation",
+                                                                                                "relation":  "oneToOne",
+                                                                                                "target":  "api::resourcy.resourcy",
+                                                                                                "mappedBy":  "site_setting"
+                                                                                            },
+                                                                               "product_page":  {
+                                                                                                    "type":  "relation",
+                                                                                                    "relation":  "oneToOne",
+                                                                                                    "target":  "api::product-page.product-page",
+                                                                                                    "mappedBy":  "site_setting"
+                                                                                                },
+                                                                               "application_page":  {
+                                                                                                        "type":  "relation",
+                                                                                                        "relation":  "oneToOne",
+                                                                                                        "target":  "api::application-page.application-page",
+                                                                                                        "mappedBy":  "site_setting"
+                                                                                                    },
+                                                                               "contact_page":  {
+                                                                                                    "type":  "relation",
+                                                                                                    "relation":  "oneToOne",
+                                                                                                    "target":  "api::contact-page.contact-page",
+                                                                                                    "mappedBy":  "site_setting"
+                                                                                                },
+                                                                               "over_view_page":  {
+                                                                                                      "type":  "relation",
+                                                                                                      "relation":  "oneToOne",
+                                                                                                      "target":  "api::over-view.over-view",
+                                                                                                      "mappedBy":  "site_setting"
+                                                                                                  }
+                                                                           }
+                                                        },
+                         "product\\product":  {
+                                                  "kind":  "collectionType",
+                                                  "collectionName":  "products",
+                                                  "info":  {
+                                                               "singularName":  "product",
+                                                               "pluralName":  "products",
+                                                               "displayName":  "Product"
+                                                           },
+                                                  "options":  {
+                                                                  "draftAndPublish":  true
+                                                              },
+                                                  "pluginOptions":  {
+
+                                                                    },
+                                                  "attributes":  {
+                                                                     "site_setting":  {
+                                                                                          "type":  "relation",
+                                                                                          "relation":  "manyToOne",
+                                                                                          "target":  "api::site-setting.site-setting",
+                                                                                          "inversedBy":  "products"
+                                                                                      },
+                                                                     "category":  {
+                                                                                      "type":  "relation",
+                                                                                      "relation":  "manyToOne",
+                                                                                      "target":  "api::category.category",
+                                                                                      "inversedBy":  "products"
+                                                                                  },
+                                                                     "model":  {
+                                                                                   "type":  "string"
+                                                                               },
+                                                                     "name":  {
+                                                                                  "type":  "string"
+                                                                              },
+                                                                     "slug":  {
+                                                                                  "type":  "uid",
+                                                                                  "targetField":  "model"
+                                                                              },
+                                                                     "isPick":  {
+                                                                                    "type":  "boolean",
+                                                                                    "default":  false
+                                                                                },
+                                                                     "isAllPick":  {
+                                                                                       "type":  "boolean",
+                                                                                       "default":  false
+                                                                                   },
+                                                                     "badges":  {
+                                                                                    "type":  "enumeration",
+                                                                                    "enum":  [
+                                                                                                 "New",
+                                                                                                 "Hot"
+                                                                                             ]
+                                                                                },
+                                                                     "features":  {
+                                                                                      "type":  "component",
+                                                                                      "component":  "shared.item-feature",
+                                                                                      "repeatable":  true
+                                                                                  },
+                                                                     "images":  {
+                                                                                    "type":  "component",
+                                                                                    "component":  "shared.images",
+                                                                                    "repeatable":  true
+                                                                                },
+                                                                     "spec_groups":  {
+                                                                                         "type":  "component",
+                                                                                         "component":  "product.spec-group",
+                                                                                         "repeatable":  true
+                                                                                     },
+                                                                     "downloads":  {
+                                                                                       "type":  "relation",
+                                                                                       "relation":  "manyToMany",
+                                                                                       "target":  "api::download.download",
+                                                                                       "mappedBy":  "products"
+                                                                                   },
+                                                                     "applications":  {
+                                                                                          "type":  "relation",
+                                                                                          "relation":  "manyToMany",
+                                                                                          "target":  "api::application.application",
+                                                                                          "mappedBy":  "products"
+                                                                                      },
+                                                                     "seo":  {
+                                                                                 "type":  "component",
+                                                                                 "component":  "shared.seo-meta",
+                                                                                 "repeatable":  false
+                                                                             },
+                                                                     "inquiries":  {
+                                                                                       "type":  "relation",
+                                                                                       "relation":  "manyToMany",
+                                                                                       "target":  "api::inquiry.inquiry",
+                                                                                       "inversedBy":  "products"
+                                                                                   }
+                                                                 }
+                                              },
+                         "certification\\certification":  {
+                                                              "kind":  "collectionType",
+                                                              "collectionName":  "certifications",
+                                                              "info":  {
+                                                                           "singularName":  "certification",
+                                                                           "pluralName":  "certifications",
+                                                                           "displayName":  "Certification"
+                                                                       },
+                                                              "options":  {
+                                                                              "draftAndPublish":  true
+                                                                          },
+                                                              "pluginOptions":  {
+
+                                                                                },
+                                                              "attributes":  {
+                                                                                 "certifications":  {
+                                                                                                        "type":  "component",
+                                                                                                        "component":  "page.certification-item",
+                                                                                                        "repeatable":  true
+                                                                                                    },
+                                                                                 "over_view_page":  {
+                                                                                                        "type":  "relation",
+                                                                                                        "relation":  "manyToOne",
+                                                                                                        "target":  "api::over-view.over-view",
+                                                                                                        "inversedBy":  "certifications"
+                                                                                                    }
+                                                                             }
+                                                          },
+                         "application-page\\application-page":  {
+                                                                    "kind":  "collectionType",
+                                                                    "collectionName":  "application_pages",
+                                                                    "info":  {
+                                                                                 "singularName":  "application-page",
+                                                                                 "pluralName":  "application-pages",
+                                                                                 "displayName":  "ApplicationPage"
+                                                                             },
+                                                                    "options":  {
+                                                                                    "draftAndPublish":  true
+                                                                                },
+                                                                    "pluginOptions":  {
+
+                                                                                      },
+                                                                    "attributes":  {
+                                                                                       "site_setting":  {
+                                                                                                            "type":  "relation",
+                                                                                                            "relation":  "oneToOne",
+                                                                                                            "target":  "api::site-setting.site-setting",
+                                                                                                            "inversedBy":  "application_page"
+                                                                                                        },
+                                                                                       "hero":  {
+                                                                                                    "type":  "component",
+                                                                                                    "component":  "page.hero",
+                                                                                                    "repeatable":  false
+                                                                                                },
+                                                                                       "applications":  {
+                                                                                                            "type":  "relation",
+                                                                                                            "relation":  "oneToMany",
+                                                                                                            "target":  "api::application.application",
+                                                                                                            "mappedBy":  "application_page"
+                                                                                                        },
+                                                                                       "cta":  {
+                                                                                                   "type":  "component",
+                                                                                                   "component":  "shared.item-feature",
+                                                                                                   "repeatable":  false
+                                                                                               },
+                                                                                       "cta_btn":  {
+                                                                                                       "type":  "component",
+                                                                                                       "component":  "shared.btn",
+                                                                                                       "repeatable":  false
+                                                                                                   }
+                                                                                   }
+                                                                },
+                         "technology\\technology":  {
+                                                        "kind":  "collectionType",
+                                                        "collectionName":  "technologies",
+                                                        "info":  {
+                                                                     "singularName":  "technology",
+                                                                     "pluralName":  "technologies",
+                                                                     "displayName":  "TechnologyPage"
+                                                                 },
+                                                        "options":  {
+                                                                        "draftAndPublish":  true
+                                                                    },
+                                                        "pluginOptions":  {
+
+                                                                          },
+                                                        "attributes":  {
+                                                                           "site_setting":  {
+                                                                                                "type":  "relation",
+                                                                                                "relation":  "oneToOne",
+                                                                                                "target":  "api::site-setting.site-setting",
+                                                                                                "mappedBy":  "technology"
+                                                                                            },
+                                                                           "hero":  {
+                                                                                        "type":  "component",
+                                                                                        "component":  "page.hero",
+                                                                                        "repeatable":  false
+                                                                                    },
+                                                                           "intro":  {
+                                                                                         "type":  "text"
+                                                                                     },
+                                                                           "Technology":  {
+                                                                                              "type":  "dynamiczone",
+                                                                                              "components":  [
+                                                                                                                 "shared.item-feature",
+                                                                                                                 "page.stats",
+                                                                                                                 "page.features",
+                                                                                                                 "shared.tag-item"
+                                                                                                             ]
+                                                                                          },
+                                                                           "EngineeringPrinciples":  {
+                                                                                                         "type":  "dynamiczone",
+                                                                                                         "components":  [
+                                                                                                                            "page.features",
+                                                                                                                            "shared.item-feature",
+                                                                                                                            "shared.tag-item"
+                                                                                                                        ]
+                                                                                                     },
+                                                                           "IPRatings":  {
+                                                                                             "type":  "dynamiczone",
+                                                                                             "components":  [
+                                                                                                                "shared.item-feature",
+                                                                                                                "page.stats",
+                                                                                                                "page.features",
+                                                                                                                "page.ip-features",
+                                                                                                                "shared.tag-item"
+                                                                                                            ]
+                                                                                         },
+                                                                           "Manufacturing":  {
+                                                                                                 "type":  "dynamiczone",
+                                                                                                 "components":  [
+                                                                                                                    "shared.item-feature",
+                                                                                                                    "page.features",
+                                                                                                                    "shared.tag-item"
+                                                                                                                ]
+                                                                                             },
+                                                                           "Certifications":  {
+                                                                                                  "type":  "dynamiczone",
+                                                                                                  "components":  [
+                                                                                                                     "shared.item-feature",
+                                                                                                                     "page.certification-item",
+                                                                                                                     "shared.tag-item"
+                                                                                                                 ]
+                                                                                              },
+                                                                           "SeriesComparison":  {
+                                                                                                    "type":  "dynamiczone",
+                                                                                                    "components":  [
+                                                                                                                       "shared.item-feature",
+                                                                                                                       "page.series-specifications",
+                                                                                                                       "shared.tag-item"
+                                                                                                                   ]
+                                                                                                },
+                                                                           "Photometric":  {
+                                                                                               "type":  "dynamiczone",
+                                                                                               "components":  [
+                                                                                                                  "shared.item-feature",
+                                                                                                                  "page.image-title",
+                                                                                                                  "shared.tag-item"
+                                                                                                              ]
+                                                                                           },
+                                                                           "Materials":  {
+                                                                                             "type":  "dynamiczone",
+                                                                                             "components":  [
+                                                                                                                "shared.item-feature",
+                                                                                                                "page.image-title",
+                                                                                                                "shared.tag-item"
+                                                                                                            ]
+                                                                                         },
+                                                                           "Downloads":  {
+                                                                                             "type":  "dynamiczone",
+                                                                                             "components":  [
+                                                                                                                "shared.item-feature",
+                                                                                                                "shared.tag-item"
+                                                                                                            ]
+                                                                                         },
+                                                                           "relatedDownload":  {
+                                                                                                   "type":  "relation",
+                                                                                                   "relation":  "oneToMany",
+                                                                                                   "target":  "api::download.download",
+                                                                                                   "mappedBy":  "technology"
+                                                                                               },
+                                                                           "FAQ":  {
+                                                                                       "type":  "dynamiczone",
+                                                                                       "components":  [
+                                                                                                          "shared.item-feature",
+                                                                                                          "shared.ip-features"
+                                                                                                      ]
+                                                                                   },
+                                                                           "EngineeringSupport":  {
+                                                                                                      "type":  "dynamiczone",
+                                                                                                      "components":  [
+                                                                                                                         "shared.item-feature",
+                                                                                                                         "shared.btn"
+                                                                                                                     ]
+                                                                                                  }
+                                                                       }
+                                                    },
+                         "download\\download":  {
+                                                    "kind":  "collectionType",
+                                                    "collectionName":  "downloads",
+                                                    "info":  {
+                                                                 "singularName":  "download",
+                                                                 "pluralName":  "downloads",
+                                                                 "displayName":  "Download"
+                                                             },
+                                                    "options":  {
+                                                                    "draftAndPublish":  true
+                                                                },
+                                                    "pluginOptions":  {
+
+                                                                      },
+                                                    "attributes":  {
+                                                                       "downloads":  {
+                                                                                         "type":  "component",
+                                                                                         "component":  "page.download",
+                                                                                         "repeatable":  true
+                                                                                     },
+                                                                       "technology":  {
+                                                                                          "type":  "relation",
+                                                                                          "relation":  "manyToOne",
+                                                                                          "target":  "api::technology.technology",
+                                                                                          "inversedBy":  "relatedDownload"
+                                                                                      },
+                                                                       "resourcy":  {
+                                                                                        "type":  "relation",
+                                                                                        "relation":  "manyToOne",
+                                                                                        "target":  "api::resourcy.resourcy",
+                                                                                        "inversedBy":  "downloads"
+                                                                                    },
+                                                                       "products":  {
+                                                                                        "type":  "relation",
+                                                                                        "relation":  "manyToMany",
+                                                                                        "target":  "api::product.product",
+                                                                                        "inversedBy":  "downloads"
+                                                                                    }
+                                                                   }
+                                                },
+                         "over-view\\over-view":  {
+                                                      "kind":  "collectionType",
+                                                      "collectionName":  "over_views",
+                                                      "info":  {
+                                                                   "singularName":  "over-view",
+                                                                   "pluralName":  "over-views",
+                                                                   "displayName":  "OverViewPage"
+                                                               },
+                                                      "options":  {
+                                                                      "draftAndPublish":  true
+                                                                  },
+                                                      "pluginOptions":  {
+
+                                                                        },
+                                                      "attributes":  {
+                                                                         "site_setting":  {
+                                                                                              "type":  "relation",
+                                                                                              "relation":  "oneToOne",
+                                                                                              "target":  "api::site-setting.site-setting",
+                                                                                              "inversedBy":  "over_view_page"
+                                                                                          },
+                                                                         "hero":  {
+                                                                                      "type":  "component",
+                                                                                      "component":  "page.hero",
+                                                                                      "repeatable":  false
+                                                                                  },
+                                                                         "hero_tag":  {
+                                                                                          "type":  "string"
+                                                                                      },
+                                                                         "hero_btn":  {
+                                                                                          "type":  "component",
+                                                                                          "component":  "shared.btn",
+                                                                                          "repeatable":  true
+                                                                                      },
+                                                                         "hero_stats":  {
+                                                                                            "type":  "component",
+                                                                                            "component":  "page.stats",
+                                                                                            "repeatable":  true
+                                                                                        },
+                                                                         "hero_bar":  {
+                                                                                          "type":  "component",
+                                                                                          "component":  "home.trust-bar-item",
+                                                                                          "repeatable":  true
+                                                                                      },
+                                                                         "categories":  {
+                                                                                            "type":  "relation",
+                                                                                            "relation":  "oneToMany",
+                                                                                            "target":  "api::category.category",
+                                                                                            "mappedBy":  "over_view_page"
+                                                                                        },
+                                                                         "page":  {
+                                                                                      "type":  "dynamiczone",
+                                                                                      "components":  [
+                                                                                                         "shared.tag-item",
+                                                                                                         "shared.item-feature",
+                                                                                                         "page.features",
+                                                                                                         "shared.btn",
+                                                                                                         "page.stats",
+                                                                                                         "page.hero"
+                                                                                                     ]
+                                                                                  },
+                                                                         "certifications":  {
+                                                                                                "type":  "relation",
+                                                                                                "relation":  "oneToMany",
+                                                                                                "target":  "api::certification.certification",
+                                                                                                "mappedBy":  "over_view_page"
+                                                                                            }
+                                                                     }
+                                                  }
+                     }
+}

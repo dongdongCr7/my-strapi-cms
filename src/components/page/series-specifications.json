@@ -1,0 +1,48 @@
+{
+  "collectionName": "components_page_series_specifications",
+  "info": {
+    "displayName": "seriesSpecifications"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "tag": {
+      "type": "enumeration",
+      "enum": [
+        "standard",
+        "premium",
+        "ultra"
+      ]
+    },
+    "Chip_density": {
+      "type": "string"
+    },
+    "CCT_range": {
+      "type": "string"
+    },
+    "CRI": {
+      "type": "string"
+    },
+    "Output": {
+      "type": "string"
+    },
+    "IP_rating": {
+      "type": "string"
+    },
+    "Cutting_length": {
+      "type": "string"
+    },
+    "PCB_width": {
+      "type": "string"
+    },
+    "Voltage": {
+      "type": "string"
+    },
+    "Typical_application": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

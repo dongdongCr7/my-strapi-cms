@@ -286,6 +286,7 @@ export interface AdminSession extends Struct.CollectionTypeSchema {
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'admin::session'> &
       Schema.Attribute.Private;
+    metadata: Schema.Attribute.JSON & Schema.Attribute.Private;
     origin: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.Private;
@@ -468,6 +469,8 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
     publishedAt: Schema.Attribute.DateTime;
     registrationToken: Schema.Attribute.String & Schema.Attribute.Private;
     resetPasswordToken: Schema.Attribute.String & Schema.Attribute.Private;
+    resetPasswordTokenExpiresAt: Schema.Attribute.DateTime &
+      Schema.Attribute.Private;
     roles: Schema.Attribute.Relation<'manyToMany', 'admin::role'> &
       Schema.Attribute.Private;
     updatedAt: Schema.Attribute.DateTime;
@@ -477,69 +480,58 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiAccessoryAccessory extends Struct.CollectionTypeSchema {
-  collectionName: 'accessories';
+export interface ApiApplicationPageApplicationPage
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'application_pages';
   info: {
-    displayName: 'accessory';
-    pluralName: 'accessories';
-    singularName: 'accessory';
+    displayName: 'ApplicationPage';
+    pluralName: 'application-pages';
+    singularName: 'application-page';
   };
   options: {
     draftAndPublish: true;
   };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
   attributes: {
-    accessories: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::accessory.accessory'
-    >;
-    category: Schema.Attribute.Enumeration<
-      [
-        'Controller',
-        'Power Supply',
-        'Connector',
-        'Profile',
-        'Mounting Clip',
-        'End Cap',
-        'Other',
-      ]
-    > &
-      Schema.Attribute.Required;
-    certifications: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::certification.certification'
-    >;
-    compatibleProducts: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::product.product'
+    applications: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::application.application'
     >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    downloads: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::download.download'
-    >;
-    image: Schema.Attribute.Media<'images'>;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    cta: Schema.Attribute.Component<'shared.item-feature', false> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    cta_btn: Schema.Attribute.Component<'shared.btn', false> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    hero: Schema.Attribute.Component<'page.hero', false> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
-      'api::accessory.accessory'
-    > &
-      Schema.Attribute.Private;
-    longDescription: Schema.Attribute.RichText;
-    model: Schema.Attribute.String & Schema.Attribute.Unique;
-    name: Schema.Attribute.String & Schema.Attribute.Required;
-    publishedAt: Schema.Attribute.DateTime;
-    publishTime: Schema.Attribute.DateTime;
-    relatedAccessories: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::accessory.accessory'
+      'api::application-page.application-page'
     >;
-    seo: Schema.Attribute.Component<'seo.meta', false>;
-    shortDescription: Schema.Attribute.Text;
-    sites: Schema.Attribute.Relation<'manyToMany', 'api::site.site'>;
-    slug: Schema.Attribute.UID<'name'> & Schema.Attribute.Required;
-    specifications: Schema.Attribute.Component<'shared.specification', true>;
+    publishedAt: Schema.Attribute.DateTime;
+    site_setting: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::site-setting.site-setting'
+    >;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -549,174 +541,161 @@ export interface ApiAccessoryAccessory extends Struct.CollectionTypeSchema {
 export interface ApiApplicationApplication extends Struct.CollectionTypeSchema {
   collectionName: 'applications';
   info: {
-    displayName: 'application';
+    displayName: 'Application';
     pluralName: 'applications';
     singularName: 'application';
   };
   options: {
     draftAndPublish: true;
   };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
   attributes: {
-    articles: Schema.Attribute.Relation<'manyToMany', 'api::article.article'>;
+    application_page: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::application-page.application-page'
+    >;
+    applications: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::application.application'
+    >;
+    category: Schema.Attribute.Relation<'manyToOne', 'api::category.category'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    faqs: Schema.Attribute.Relation<'manyToMany', 'api::faq.faq'>;
-    gallery: Schema.Attribute.Media<'images', true>;
-    heroImage: Schema.Attribute.Media<'images'>;
-    icon: Schema.Attribute.Media<'images'>;
-    industries: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::industry.industry'
-    >;
-    lightingEffects: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::lighting-effect.lighting-effect'
-    >;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    CTA: Schema.Attribute.DynamicZone<['shared.item-feature', 'shared.btn']> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    description: Schema.Attribute.Text &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    features: Schema.Attribute.Component<'shared.item-feature', true> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    images: Schema.Attribute.Component<'shared.images', true> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::application.application'
-    > &
-      Schema.Attribute.Private;
-    longDescription: Schema.Attribute.RichText;
-    name: Schema.Attribute.String & Schema.Attribute.Required;
-    products: Schema.Attribute.Relation<'manyToMany', 'api::product.product'>;
-    projects: Schema.Attribute.Relation<'manyToMany', 'api::project.project'>;
-    publishedAt: Schema.Attribute.DateTime;
-    publishTime: Schema.Attribute.DateTime;
-    seo: Schema.Attribute.Component<'seo.meta', false>;
-    shortDescription: Schema.Attribute.Text;
-    sites: Schema.Attribute.Relation<'manyToMany', 'api::site.site'>;
-    slug: Schema.Attribute.UID<'name'> & Schema.Attribute.Required;
-    technologies: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::technology.technology'
     >;
+    longDescription: Schema.Attribute.Text &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    name: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    products: Schema.Attribute.Relation<'manyToMany', 'api::product.product'>;
+    publishedAt: Schema.Attribute.DateTime;
+    relatedApplication: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::application.application'
+    >;
+    results: Schema.Attribute.Component<'home.hero-stat', true> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    seo: Schema.Attribute.Component<'shared.seo-meta', false> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    site_setting: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::site-setting.site-setting'
+    >;
+    slug: Schema.Attribute.UID<'name'>;
+    tags: Schema.Attribute.Component<'shared.tag-item', true> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    trust_bar: Schema.Attribute.Component<'home.trust-bar-item', true> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
   };
 }
 
-export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
-  collectionName: 'articles';
+export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
+  collectionName: 'categories';
   info: {
-    displayName: 'article';
-    pluralName: 'articles';
-    singularName: 'article';
+    displayName: 'Category';
+    pluralName: 'categories';
+    singularName: 'category';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    aiContent: Schema.Attribute.Component<'shared.ai-content', false>;
-    articles: Schema.Attribute.Relation<'manyToMany', 'api::article.article'>;
-    author: Schema.Attribute.String;
-    category: Schema.Attribute.Enumeration<
-      [
-        'Buying Guide',
-        'Technology',
-        'Comparison',
-        'Installation',
-        'Case Study',
-        'News',
-      ]
-    > &
-      Schema.Attribute.DefaultTo<'Technology'>;
-    content: Schema.Attribute.RichText;
-    coverImage: Schema.Attribute.Media<'images'>;
+    applications: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::application.application'
+    >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    excerpt: Schema.Attribute.Text;
-    faqs: Schema.Attribute.Relation<'manyToMany', 'api::faq.faq'>;
-    industries: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::industry.industry'
-    >;
-    isFeatured: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    description: Schema.Attribute.Text;
+    image: Schema.Attribute.Media<'images'>;
+    imageAlt: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
-      'api::article.article'
+      'api::category.category'
     > &
       Schema.Attribute.Private;
+    name: Schema.Attribute.String;
+    order: Schema.Attribute.Integer;
+    over_view_page: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::over-view.over-view'
+    >;
+    product_page: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::product-page.product-page'
+    >;
+    productOrApplication: Schema.Attribute.Enumeration<
+      ['product', 'application']
+    >;
+    products: Schema.Attribute.Relation<'oneToMany', 'api::product.product'>;
     publishedAt: Schema.Attribute.DateTime;
-    publishTime: Schema.Attribute.DateTime;
-    readTime: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<5>;
-    relatedApplications: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::application.application'
+    seo: Schema.Attribute.Component<'shared.seo-meta', false>;
+    site_setting: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::site-setting.site-setting'
     >;
-    relatedArticles: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::article.article'
-    >;
-    relatedProducts: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::product.product'
-    >;
-    relatedProjects: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::project.project'
-    >;
-    relatedTechnologies: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::technology.technology'
-    >;
-    seo: Schema.Attribute.Component<'seo.meta', false>;
-    sites: Schema.Attribute.Relation<'manyToMany', 'api::site.site'>;
-    slug: Schema.Attribute.UID<'title'> & Schema.Attribute.Required;
-    tags: Schema.Attribute.Relation<'manyToMany', 'api::tag.tag'>;
-    title: Schema.Attribute.String & Schema.Attribute.Required;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    videos: Schema.Attribute.Relation<'manyToMany', 'api::video.video'>;
-  };
-}
-
-export interface ApiBrandBrand extends Struct.CollectionTypeSchema {
-  collectionName: 'brands';
-  info: {
-    displayName: 'brand';
-    pluralName: 'brands';
-    singularName: 'brand';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    designPhilosophy: Schema.Attribute.RichText;
-    engineeringNotes: Schema.Attribute.RichText;
-    heroImage: Schema.Attribute.Media<'images'>;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<'oneToMany', 'api::brand.brand'> &
-      Schema.Attribute.Private;
-    logo: Schema.Attribute.Media<'images'>;
-    longDescription: Schema.Attribute.RichText;
-    name: Schema.Attribute.String & Schema.Attribute.Required;
-    productFamilies: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::product-family.product-family'
-    >;
-    products: Schema.Attribute.Relation<'manyToMany', 'api::product.product'>;
-    publishedAt: Schema.Attribute.DateTime;
-    publishTime: Schema.Attribute.DateTime;
-    seo: Schema.Attribute.Component<'seo.meta', false>;
-    shortDescription: Schema.Attribute.Text;
-    shortName: Schema.Attribute.String;
-    sites: Schema.Attribute.Relation<'manyToMany', 'api::site.site'>;
-    slug: Schema.Attribute.UID<'name'> & Schema.Attribute.Required;
-    tagline: Schema.Attribute.String;
-    typicalProjects: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::project.project'
-    >;
+    slug: Schema.Attribute.UID<'name'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -727,50 +706,134 @@ export interface ApiCertificationCertification
   extends Struct.CollectionTypeSchema {
   collectionName: 'certifications';
   info: {
-    displayName: 'certification';
+    displayName: 'Certification';
     pluralName: 'certifications';
     singularName: 'certification';
   };
   options: {
     draftAndPublish: true;
   };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
   attributes: {
-    certificateFile: Schema.Attribute.Media<'files'>;
+    certifications: Schema.Attribute.Component<
+      'page.certification-item',
+      true
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    description: Schema.Attribute.Text;
-    icon: Schema.Attribute.Media<'images'>;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::certification.certification'
-    > &
-      Schema.Attribute.Private;
-    name: Schema.Attribute.String & Schema.Attribute.Required;
+    >;
+    over_view_page: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::over-view.over-view'
+    >;
     publishedAt: Schema.Attribute.DateTime;
-    publishTime: Schema.Attribute.DateTime;
-    relatedAccessories: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::accessory.accessory'
-    >;
-    relatedProducts: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::product.product'
-    >;
-    sites: Schema.Attribute.Relation<'manyToMany', 'api::site.site'>;
-    slug: Schema.Attribute.UID<'name'> & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    validUntil: Schema.Attribute.Date;
+  };
+}
+
+export interface ApiContactPageContactPage extends Struct.CollectionTypeSchema {
+  collectionName: 'contact_pages';
+  info: {
+    displayName: 'ContactPage';
+    pluralName: 'contact-pages';
+    singularName: 'contact-page';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    address: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    email: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    hero: Schema.Attribute.Component<'page.hero', false> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    inquiry: Schema.Attribute.Component<'shared.item-feature', false> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    inquiry_btn: Schema.Attribute.Component<'shared.btn', false> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::contact-page.contact-page'
+    >;
+    phone: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    publishedAt: Schema.Attribute.DateTime;
+    salesInfo: Schema.Attribute.Component<'page.ip-features', false> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    site_setting: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::site-setting.site-setting'
+    >;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    working_hours: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
   };
 }
 
 export interface ApiDownloadDownload extends Struct.CollectionTypeSchema {
   collectionName: 'downloads';
   info: {
-    displayName: 'download';
+    displayName: 'Download';
     pluralName: 'downloads';
     singularName: 'download';
   };
@@ -778,389 +841,151 @@ export interface ApiDownloadDownload extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    category: Schema.Attribute.Enumeration<
-      [
-        'Datasheet',
-        'IES File',
-        'Installation Guide',
-        'Catalog',
-        'Warranty',
-        'Other',
-      ]
-    >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    description: Schema.Attribute.Text;
-    downloadCount: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
-    file: Schema.Attribute.Media<'files'>;
-    fileSize: Schema.Attribute.String;
-    fileType: Schema.Attribute.String;
+    downloads: Schema.Attribute.Component<'page.download', true>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::download.download'
     > &
       Schema.Attribute.Private;
+    products: Schema.Attribute.Relation<'manyToMany', 'api::product.product'>;
     publishedAt: Schema.Attribute.DateTime;
-    publishTime: Schema.Attribute.DateTime;
-    relatedAccessories: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::accessory.accessory'
-    >;
-    relatedProducts: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::product.product'
-    >;
-    relatedSeries: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::product-sery.product-sery'
-    >;
-    relatedTechnologies: Schema.Attribute.Relation<
-      'manyToMany',
+    resourcy: Schema.Attribute.Relation<'manyToOne', 'api::resourcy.resourcy'>;
+    technology: Schema.Attribute.Relation<
+      'manyToOne',
       'api::technology.technology'
     >;
-    sites: Schema.Attribute.Relation<'manyToMany', 'api::site.site'>;
-    slug: Schema.Attribute.UID<'title'> & Schema.Attribute.Required;
-    thumbnail: Schema.Attribute.Media<'images'>;
-    title: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
   };
 }
 
-export interface ApiFaqFaq extends Struct.CollectionTypeSchema {
-  collectionName: 'faqs';
+export interface ApiInquiryInquiry extends Struct.CollectionTypeSchema {
+  collectionName: 'inquiries';
   info: {
-    displayName: 'faq';
-    pluralName: 'faqs';
-    singularName: 'faq';
+    displayName: 'Inquiry';
+    pluralName: 'inquiries';
+    singularName: 'inquiry';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
-    answer: Schema.Attribute.RichText;
-    category: Schema.Attribute.Enumeration<
-      [
-        'Product',
-        'Installation',
-        'Technical',
-        'Ordering',
-        'Warranty',
-        'General',
-      ]
-    > &
-      Schema.Attribute.DefaultTo<'General'>;
+    attachment: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
+    companyName: Schema.Attribute.String;
+    country: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    industries: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::industry.industry'
-    >;
-    isFeatured: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<'oneToMany', 'api::faq.faq'> &
-      Schema.Attribute.Private;
-    publishedAt: Schema.Attribute.DateTime;
-    publishTime: Schema.Attribute.DateTime;
-    question: Schema.Attribute.String & Schema.Attribute.Required;
-    relatedApplications: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::application.application'
-    >;
-    relatedArticles: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::article.article'
-    >;
-    relatedProducts: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::product.product'
-    >;
-    relatedTechnologies: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::technology.technology'
-    >;
-    sites: Schema.Attribute.Relation<'manyToMany', 'api::site.site'>;
-    slug: Schema.Attribute.UID<'question'> & Schema.Attribute.Required;
-    sortOrder: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
-export interface ApiFormSubmissionFormSubmission
-  extends Struct.CollectionTypeSchema {
-  collectionName: 'form_submissions';
-  info: {
-    displayName: 'form-submission';
-    pluralName: 'form-submissions';
-    singularName: 'form-submission';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    company: Schema.Attribute.String;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    email: Schema.Attribute.String & Schema.Attribute.Required;
-    formType: Schema.Attribute.Enumeration<
-      ['contact', 'sample-request', 'quote', 'general']
-    > &
-      Schema.Attribute.Required;
-    ipAddress: Schema.Attribute.String;
+    email: Schema.Attribute.String;
+    firstName: Schema.Attribute.String;
+    lastName: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
-      'api::form-submission.form-submission'
+      'api::inquiry.inquiry'
     > &
       Schema.Attribute.Private;
-    message: Schema.Attribute.RichText;
-    name: Schema.Attribute.String & Schema.Attribute.Required;
+    message: Schema.Attribute.Text;
     phone: Schema.Attribute.String;
     products: Schema.Attribute.Relation<'manyToMany', 'api::product.product'>;
+    productSku: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
-    publishTime: Schema.Attribute.DateTime;
-    site: Schema.Attribute.Relation<'manyToOne', 'api::site.site'>;
-    sourcePage: Schema.Attribute.String;
-    statu: Schema.Attribute.Enumeration<
-      ['new', 'read', 'replied', 'closed', 'spam']
-    > &
-      Schema.Attribute.DefaultTo<'new'>;
-    subject: Schema.Attribute.String;
+    sourceUrl: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    userAgent: Schema.Attribute.String;
   };
 }
 
-export interface ApiIndustryIndustry extends Struct.CollectionTypeSchema {
-  collectionName: 'industries';
+export interface ApiOverViewOverView extends Struct.CollectionTypeSchema {
+  collectionName: 'over_views';
   info: {
-    displayName: 'industry';
-    pluralName: 'industries';
-    singularName: 'industry';
+    displayName: 'OverViewPage';
+    pluralName: 'over-views';
+    singularName: 'over-view';
   };
   options: {
     draftAndPublish: true;
   };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
   attributes: {
-    applications: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::application.application'
-    >;
-    articles: Schema.Attribute.Relation<'manyToMany', 'api::article.article'>;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    faqs: Schema.Attribute.Relation<'manyToMany', 'api::faq.faq'>;
-    heroImage: Schema.Attribute.Media<'images'>;
-    icon: Schema.Attribute.Media<'images'>;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
+    categories: Schema.Attribute.Relation<
       'oneToMany',
-      'api::industry.industry'
-    > &
-      Schema.Attribute.Private;
-    longDescription: Schema.Attribute.RichText;
-    name: Schema.Attribute.String & Schema.Attribute.Required;
-    products: Schema.Attribute.Relation<'manyToMany', 'api::product.product'>;
-    projects: Schema.Attribute.Relation<'manyToMany', 'api::project.project'>;
-    publishedAt: Schema.Attribute.DateTime;
-    publishTime: Schema.Attribute.DateTime;
-    seo: Schema.Attribute.Component<'seo.meta', false>;
-    shortDescription: Schema.Attribute.Text;
-    sites: Schema.Attribute.Relation<'manyToMany', 'api::site.site'>;
-    slug: Schema.Attribute.UID<'name'> & Schema.Attribute.Required;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
-export interface ApiLightingEffectLightingEffect
-  extends Struct.CollectionTypeSchema {
-  collectionName: 'lighting_effects';
-  info: {
-    displayName: 'lighting-effect';
-    pluralName: 'lighting-effects';
-    singularName: 'lighting-effect';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    applications: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::application.application'
+      'api::category.category'
+    >;
+    certifications: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::certification.certification'
     >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    icon: Schema.Attribute.Media<'images'>;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    hero: Schema.Attribute.Component<'page.hero', false> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    hero_bar: Schema.Attribute.Component<'home.trust-bar-item', true> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    hero_btn: Schema.Attribute.Component<'shared.btn', true> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    hero_stats: Schema.Attribute.Component<'page.stats', true> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    hero_tag: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
-      'api::lighting-effect.lighting-effect'
-    > &
-      Schema.Attribute.Private;
-    longDescription: Schema.Attribute.RichText;
-    name: Schema.Attribute.String & Schema.Attribute.Required;
-    previewImage: Schema.Attribute.Media<'images'>;
-    previewVideo: Schema.Attribute.String;
-    products: Schema.Attribute.Relation<'manyToMany', 'api::product.product'>;
-    publishedAt: Schema.Attribute.DateTime;
-    publishTime: Schema.Attribute.DateTime;
-    seo: Schema.Attribute.Component<'seo.meta', false>;
-    shortDescription: Schema.Attribute.Text;
-    sites: Schema.Attribute.Relation<'manyToMany', 'api::site.site'>;
-    slug: Schema.Attribute.UID<'name'> & Schema.Attribute.Required;
-    sortOrder: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
-    technologies: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::technology.technology'
+      'api::over-view.over-view'
     >;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
-export interface ApiNavigationNavigation extends Struct.CollectionTypeSchema {
-  collectionName: 'navigations';
-  info: {
-    displayName: 'navigation';
-    pluralName: 'navigations';
-    singularName: 'navigation';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    footerColumns: Schema.Attribute.Component<'navigation.footer-column', true>;
-    items: Schema.Attribute.Component<'navigation.nav-item', true>;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::navigation.navigation'
-    > &
-      Schema.Attribute.Private;
-    menuType: Schema.Attribute.Enumeration<
-      ['main', 'footer', 'sidebar', 'mobile']
-    > &
-      Schema.Attribute.DefaultTo<'main'>;
-    name: Schema.Attribute.String & Schema.Attribute.Required;
-    publishedAt: Schema.Attribute.DateTime;
-    publishTime: Schema.Attribute.DateTime;
-    site: Schema.Attribute.Relation<'manyToOne', 'api::site.site'>;
-    slug: Schema.Attribute.UID<'name'> & Schema.Attribute.Required;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
-export interface ApiPagePage extends Struct.CollectionTypeSchema {
-  collectionName: 'pages';
-  info: {
-    displayName: 'page';
-    pluralName: 'pages';
-    singularName: 'page';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    content: Schema.Attribute.DynamicZone<
+    page: Schema.Attribute.DynamicZone<
       [
-        'page.section-video-embed',
-        'page.section-testimonials',
-        'page.section-stats',
-        'page.section-richtext',
-        'page.section-project-grid',
-        'page.section-product-grid',
-        'page.section-image-gallery',
-        'page.section-hero',
-        'page.section-features',
-        'page.section-faq-list',
-        'page.section-cta',
-        'page.section-article-grid',
+        'shared.tag-item',
+        'shared.item-feature',
+        'page.features',
+        'shared.btn',
+        'page.stats',
+        'page.hero',
       ]
-    >;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<'oneToMany', 'api::page.page'> &
-      Schema.Attribute.Private;
-    publishedAt: Schema.Attribute.DateTime;
-    publishTime: Schema.Attribute.DateTime;
-    seo: Schema.Attribute.Component<'seo.meta', false>;
-    site: Schema.Attribute.Relation<'manyToOne', 'api::site.site'>;
-    slug: Schema.Attribute.UID<'title'> & Schema.Attribute.Required;
-    template: Schema.Attribute.Enumeration<
-      ['home', 'about', 'contact', 'custom', 'landing']
     > &
-      Schema.Attribute.DefaultTo<'custom'>;
-    title: Schema.Attribute.String & Schema.Attribute.Required;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
-export interface ApiProductFamilyProductFamily
-  extends Struct.CollectionTypeSchema {
-  collectionName: 'product_families';
-  info: {
-    displayName: 'product-family';
-    pluralName: 'product-families';
-    singularName: 'product-family';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    brands: Schema.Attribute.Relation<'manyToMany', 'api::brand.brand'>;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    heroImage: Schema.Attribute.Media<'images'>;
-    icon: Schema.Attribute.Media<'images'>;
-    keyFeatures: Schema.Attribute.Component<'shared.feature', true>;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::product-family.product-family'
-    > &
-      Schema.Attribute.Private;
-    longDescription: Schema.Attribute.RichText;
-    name: Schema.Attribute.String & Schema.Attribute.Required;
-    products: Schema.Attribute.Relation<'manyToMany', 'api::product.product'>;
-    productSeries: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::product-sery.product-sery'
-    >;
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     publishedAt: Schema.Attribute.DateTime;
-    publishTime: Schema.Attribute.DateTime;
-    seo: Schema.Attribute.Component<'seo.meta', false>;
-    shortDescription: Schema.Attribute.Text;
-    sites: Schema.Attribute.Relation<'manyToMany', 'api::site.site'>;
-    slug: Schema.Attribute.UID<'name'>;
-    sortOrder: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
-    tagline: Schema.Attribute.String;
-    technologies: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::technology.technology'
+    site_setting: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::site-setting.site-setting'
     >;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -1168,51 +993,52 @@ export interface ApiProductFamilyProductFamily
   };
 }
 
-export interface ApiProductSeryProductSery extends Struct.CollectionTypeSchema {
-  collectionName: 'product_series';
+export interface ApiProductPageProductPage extends Struct.CollectionTypeSchema {
+  collectionName: 'product_pages';
   info: {
-    displayName: 'product-sery';
-    pluralName: 'product-series';
-    singularName: 'product-sery';
+    displayName: 'ProductPage';
+    pluralName: 'product-pages';
+    singularName: 'product-page';
   };
   options: {
     draftAndPublish: true;
   };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
   attributes: {
+    categories: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::category.category'
+    >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    downloads: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::download.download'
-    >;
-    heroImage: Schema.Attribute.Media<'images'>;
-    keyFeatures: Schema.Attribute.Component<'shared.feature', true>;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    hero: Schema.Attribute.Component<'page.hero', false> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
-      'api::product-sery.product-sery'
-    > &
-      Schema.Attribute.Private;
-    longDescription: Schema.Attribute.RichText;
-    name: Schema.Attribute.String & Schema.Attribute.Required;
-    productFamilies: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::product-family.product-family'
+      'api::product-page.product-page'
     >;
-    products: Schema.Attribute.Relation<'manyToMany', 'api::product.product'>;
     publishedAt: Schema.Attribute.DateTime;
-    publishTime: Schema.Attribute.DateTime;
-    seo: Schema.Attribute.Component<'seo.meta', false>;
-    shortDescription: Schema.Attribute.Text;
-    sites: Schema.Attribute.Relation<'manyToMany', 'api::site.site'>;
-    slug: Schema.Attribute.UID<'name'> & Schema.Attribute.Required;
-    specifications: Schema.Attribute.Component<'shared.specification', true>;
-    tagline: Schema.Attribute.String;
-    technologies: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::technology.technology'
+    seo: Schema.Attribute.Component<'shared.seo-meta', false> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    site_setting: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::site-setting.site-setting'
     >;
+    specs: Schema.Attribute.Relation<'oneToMany', 'api::spec.spec'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1222,355 +1048,385 @@ export interface ApiProductSeryProductSery extends Struct.CollectionTypeSchema {
 export interface ApiProductProduct extends Struct.CollectionTypeSchema {
   collectionName: 'products';
   info: {
-    displayName: 'product';
+    displayName: 'Product';
     pluralName: 'products';
     singularName: 'product';
   };
   options: {
     draftAndPublish: true;
   };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
   attributes: {
-    accessories: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::accessory.accessory'
-    >;
-    advantages: Schema.Attribute.Component<'shared.advantage', true>;
-    aiContent: Schema.Attribute.Component<'shared.ai-content', false>;
     applications: Schema.Attribute.Relation<
       'manyToMany',
       'api::application.application'
     >;
-    articles: Schema.Attribute.Relation<'manyToMany', 'api::article.article'>;
-    badges: Schema.Attribute.Component<'shared.badge', true>;
-    brands: Schema.Attribute.Relation<'manyToMany', 'api::brand.brand'>;
-    certifications: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::certification.certification'
-    >;
-    commonMistakes: Schema.Attribute.Component<'product.common-mistake', true>;
-    comparisonTable: Schema.Attribute.Component<'product.comparison-row', true>;
+    badges: Schema.Attribute.Enumeration<['New', 'Hot']> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    category: Schema.Attribute.Relation<'manyToOne', 'api::category.category'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    designPhilosophy: Schema.Attribute.RichText;
     downloads: Schema.Attribute.Relation<
       'manyToMany',
       'api::download.download'
     >;
-    engineeringNotes: Schema.Attribute.Component<
-      'shared.engineering-note',
-      true
-    >;
-    faqs: Schema.Attribute.Relation<'manyToMany', 'api::faq.faq'>;
-    form_submissions: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::form-submission.form-submission'
-    >;
-    gallery: Schema.Attribute.Media<'images', true>;
-    heroImage: Schema.Attribute.Media<'images'>;
-    industries: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::industry.industry'
-    >;
-    installationImages: Schema.Attribute.Media<'images', true>;
-    isFeatured: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
-    isNew: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
-    keyFeatures: Schema.Attribute.Component<'shared.feature', true>;
-    lightingEffects: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::lighting-effect.lighting-effect'
-    >;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    features: Schema.Attribute.Component<'shared.item-feature', true> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    images: Schema.Attribute.Component<'shared.images', true> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    inquiries: Schema.Attribute.Relation<'manyToMany', 'api::inquiry.inquiry'>;
+    isAllPick: Schema.Attribute.Boolean &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Schema.Attribute.DefaultTo<false>;
+    isPick: Schema.Attribute.Boolean &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Schema.Attribute.DefaultTo<false>;
+    locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::product.product'
-    > &
-      Schema.Attribute.Private;
-    longDescription: Schema.Attribute.RichText;
+    >;
     model: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.Unique;
-    name: Schema.Attribute.String & Schema.Attribute.Required;
-    productFamilies: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::product-family.product-family'
-    >;
-    products: Schema.Attribute.Relation<'manyToMany', 'api::product.product'>;
-    productSeries: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::product-sery.product-sery'
-    >;
-    projects: Schema.Attribute.Relation<'manyToMany', 'api::project.project'>;
-    publishedAt: Schema.Attribute.DateTime;
-    publishTime: Schema.Attribute.DateTime;
-    recommendedPairing: Schema.Attribute.Component<'product.pairing', true>;
-    relatedProducts: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::product.product'
-    >;
-    seo: Schema.Attribute.Component<'seo.meta', false>;
-    shortDescription: Schema.Attribute.Text;
-    sites: Schema.Attribute.Relation<'manyToMany', 'api::site.site'>;
-    sku: Schema.Attribute.String & Schema.Attribute.Unique;
-    slug: Schema.Attribute.UID<'name'> & Schema.Attribute.Required;
-    sortOrder: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
-    specifications: Schema.Attribute.Component<'shared.specification', true>;
-    tags: Schema.Attribute.Relation<'manyToMany', 'api::tag.tag'>;
-    technologies: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::technology.technology'
-    >;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    videos: Schema.Attribute.Relation<'manyToMany', 'api::video.video'>;
-  };
-}
-
-export interface ApiProjectProject extends Struct.CollectionTypeSchema {
-  collectionName: 'projects';
-  info: {
-    displayName: 'project';
-    pluralName: 'projects';
-    singularName: 'project';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    applications: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::application.application'
-    >;
-    architect: Schema.Attribute.String;
-    articles: Schema.Attribute.Relation<'manyToMany', 'api::article.article'>;
-    brands: Schema.Attribute.Relation<'manyToMany', 'api::brand.brand'>;
-    challenge: Schema.Attribute.RichText;
-    city: Schema.Attribute.String;
-    client: Schema.Attribute.String;
-    completionDate: Schema.Attribute.Date;
-    country: Schema.Attribute.String;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    gallery: Schema.Attribute.Media<'images', true>;
-    heroImage: Schema.Attribute.Media<'images'>;
-    industries: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::industry.industry'
-    >;
-    isFeatured: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::project.project'
-    > &
-      Schema.Attribute.Private;
-    location: Schema.Attribute.String;
-    longDescription: Schema.Attribute.RichText;
-    name: Schema.Attribute.String & Schema.Attribute.Required;
-    products: Schema.Attribute.Relation<'manyToMany', 'api::product.product'>;
-    publishedAt: Schema.Attribute.DateTime;
-    publishTime: Schema.Attribute.DateTime;
-    results: Schema.Attribute.RichText;
-    seo: Schema.Attribute.Component<'seo.meta', false>;
-    shortDescription: Schema.Attribute.Text;
-    sites: Schema.Attribute.Relation<'manyToMany', 'api::site.site'>;
-    slug: Schema.Attribute.UID<'name'> & Schema.Attribute.Required;
-    solution: Schema.Attribute.RichText;
-    tags: Schema.Attribute.Relation<'manyToMany', 'api::tag.tag'>;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    videos: Schema.Attribute.Relation<'manyToMany', 'api::video.video'>;
-  };
-}
-
-export interface ApiRedirectRedirect extends Struct.CollectionTypeSchema {
-  collectionName: 'redirects';
-  info: {
-    displayName: 'redirect';
-    pluralName: 'redirects';
-    singularName: 'redirect';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    hitCount: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
-    isActive: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::redirect.redirect'
-    > &
-      Schema.Attribute.Private;
-    note: Schema.Attribute.Text;
-    publishedAt: Schema.Attribute.DateTime;
-    publishTime: Schema.Attribute.DateTime;
-    redirectType: Schema.Attribute.Enumeration<['a301', 'a302', 'a410']> &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<'a301'>;
-    site: Schema.Attribute.Relation<'manyToOne', 'api::site.site'>;
-    sourceUrl: Schema.Attribute.String & Schema.Attribute.Required;
-    targetUrl: Schema.Attribute.String & Schema.Attribute.Required;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
-export interface ApiSiteSite extends Struct.CollectionTypeSchema {
-  collectionName: 'sites';
-  info: {
-    displayName: 'site';
-    pluralName: 'sites';
-    singularName: 'site';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    accessories: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::accessory.accessory'
-    >;
-    analytics: Schema.Attribute.JSON;
-    applications: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::application.application'
-    >;
-    articles: Schema.Attribute.Relation<'manyToMany', 'api::article.article'>;
-    availableLanguages: Schema.Attribute.JSON;
-    brands: Schema.Attribute.Relation<'manyToMany', 'api::brand.brand'>;
-    certifications: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::certification.certification'
-    >;
-    contactInfo: Schema.Attribute.Component<'shared.contact-info', false>;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    defaultLocale: Schema.Attribute.Enumeration<
-      ['en', 'zh', 'de', 'fr', 'es']
-    > &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<'en'>;
-    domain: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.Unique;
-    downloads: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::download.download'
-    >;
-    faqs: Schema.Attribute.Relation<'manyToMany', 'api::faq.faq'>;
-    favicon: Schema.Attribute.Media<'images'>;
-    footerText: Schema.Attribute.String;
-    formSubmissions: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::form-submission.form-submission'
-    >;
-    industries: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::industry.industry'
-    >;
-    isPrimary: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
-    lightingEffects: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::lighting-effect.lighting-effect'
-    >;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<'oneToMany', 'api::site.site'> &
-      Schema.Attribute.Private;
-    logo: Schema.Attribute.Media<'images'>;
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     name: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.Unique;
-    navigations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::navigation.navigation'
-    >;
-    pages: Schema.Attribute.Relation<'oneToMany', 'api::page.page'>;
-    productFamilies: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::product-family.product-family'
-    >;
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     products: Schema.Attribute.Relation<'manyToMany', 'api::product.product'>;
-    productSeries: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::product-sery.product-sery'
-    >;
-    projects: Schema.Attribute.Relation<'manyToMany', 'api::project.project'>;
     publishedAt: Schema.Attribute.DateTime;
-    publishTime: Schema.Attribute.DateTime;
-    redirects: Schema.Attribute.Relation<'oneToMany', 'api::redirect.redirect'>;
-    seo: Schema.Attribute.Component<'seo.meta', false>;
-    slug: Schema.Attribute.UID<'name'> & Schema.Attribute.Required;
-    socialLinks: Schema.Attribute.Component<'shared.social-link', true>;
-    statu: Schema.Attribute.Enumeration<['draft', 'active', 'archived']> &
-      Schema.Attribute.DefaultTo<'draft'>;
-    tags: Schema.Attribute.Relation<'manyToMany', 'api::tag.tag'>;
-    technologies: Schema.Attribute.Relation<
+    related_products: Schema.Attribute.Relation<
       'manyToMany',
-      'api::technology.technology'
+      'api::product.product'
     >;
-    theme: Schema.Attribute.Component<'shared.theme', false>;
+    seo: Schema.Attribute.Component<'shared.seo-meta', false> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    site_setting: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::site-setting.site-setting'
+    >;
+    slug: Schema.Attribute.UID<'model'>;
+    spec_groups: Schema.Attribute.Component<'product.spec-group', true> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    videos: Schema.Attribute.Relation<'manyToMany', 'api::video.video'>;
   };
 }
 
-export interface ApiTagTag extends Struct.CollectionTypeSchema {
-  collectionName: 'tags';
+export interface ApiResourcyResourcy extends Struct.CollectionTypeSchema {
+  collectionName: 'resourcies';
   info: {
-    displayName: 'tag';
-    pluralName: 'tags';
-    singularName: 'tag';
+    displayName: 'ResourcyPage';
+    pluralName: 'resourcies';
+    singularName: 'resourcy';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    cta: Schema.Attribute.Component<'shared.item-feature', false> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    cta_btn: Schema.Attribute.Component<'shared.btn', false> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    downloads: Schema.Attribute.Relation<'oneToMany', 'api::download.download'>;
+    hero: Schema.Attribute.Component<'page.hero', false> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    intro: Schema.Attribute.Text &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::resourcy.resourcy'
+    >;
+    note: Schema.Attribute.Text &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    publishedAt: Schema.Attribute.DateTime;
+    seo: Schema.Attribute.Component<'shared.seo-meta', false> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    site_setting: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::site-setting.site-setting'
+    >;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiSiteSettingSiteSetting extends Struct.CollectionTypeSchema {
+  collectionName: 'site_settings';
+  info: {
+    displayName: 'SiteSetting';
+    pluralName: 'site-settings';
+    singularName: 'site-setting';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    application_page: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::application-page.application-page'
+    >;
+    applications: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::application.application'
+    >;
+    brandAccent: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    brandName: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    brandSubline: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    categories: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::category.category'
+    >;
+    contact_page: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::contact-page.contact-page'
+    >;
+    copyrightText: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    favicon: Schema.Attribute.Media<'images'> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    footerColumns: Schema.Attribute.Component<'footer.footer-column', true> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    footerContact: Schema.Attribute.Component<
+      'footer.footer-contact-info',
+      false
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    footerDescription: Schema.Attribute.Text &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    globalSeo: Schema.Attribute.Component<'shared.seo-meta', false> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    headerCtaHref: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    headerCtaText: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    languages: Schema.Attribute.JSON &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::site-setting.site-setting'
+    >;
+    navLinks: Schema.Attribute.Component<'shared.nav-link', true> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    newsletter: Schema.Attribute.Component<'shared.item-feature', false> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    newsletterButtonLabel: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Schema.Attribute.DefaultTo<'Subscribe'>;
+    newsletterPlaceholder: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Schema.Attribute.DefaultTo<'Enter your email'>;
+    over_view_page: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::over-view.over-view'
+    >;
+    parentBrand: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    parentBrandUrl: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    product_page: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::product-page.product-page'
+    >;
+    products: Schema.Attribute.Relation<'oneToMany', 'api::product.product'>;
+    publishedAt: Schema.Attribute.DateTime;
+    resourcy: Schema.Attribute.Relation<'oneToOne', 'api::resourcy.resourcy'>;
+    site: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    technology: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::technology.technology'
+    >;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiSpecSpec extends Struct.CollectionTypeSchema {
+  collectionName: 'specs';
+  info: {
+    displayName: 'Spec';
+    pluralName: 'specs';
+    singularName: 'spec';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    color: Schema.Attribute.String & Schema.Attribute.DefaultTo<'#ff6600'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    description: Schema.Attribute.Text;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<'oneToMany', 'api::tag.tag'> &
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::spec.spec'> &
       Schema.Attribute.Private;
-    name: Schema.Attribute.String & Schema.Attribute.Required;
+    product_page: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::product-page.product-page'
+    >;
     publishedAt: Schema.Attribute.DateTime;
-    publishTime: Schema.Attribute.DateTime;
-    relatedArticles: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::article.article'
-    >;
-    relatedProducts: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::product.product'
-    >;
-    relatedProjects: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::project.project'
-    >;
-    relatedTechnologies: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::technology.technology'
-    >;
-    scope: Schema.Attribute.Enumeration<['global', 'site-specific']> &
-      Schema.Attribute.DefaultTo<'global'>;
-    sites: Schema.Attribute.Relation<'manyToMany', 'api::site.site'>;
-    slug: Schema.Attribute.UID<'name'> & Schema.Attribute.Required;
-    tagType: Schema.Attribute.Enumeration<
-      ['product', 'article', 'technology', 'project', 'general']
-    > &
-      Schema.Attribute.DefaultTo<'general'>;
+    spec_group: Schema.Attribute.Component<'product.spec-group', true>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1580,134 +1436,158 @@ export interface ApiTagTag extends Struct.CollectionTypeSchema {
 export interface ApiTechnologyTechnology extends Struct.CollectionTypeSchema {
   collectionName: 'technologies';
   info: {
-    displayName: 'technology';
+    displayName: 'TechnologyPage';
     pluralName: 'technologies';
     singularName: 'technology';
   };
   options: {
     draftAndPublish: true;
   };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
   attributes: {
-    advantages: Schema.Attribute.Component<'shared.advantage', true>;
-    aiContent: Schema.Attribute.Component<'shared.ai-content', false>;
-    applications: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::application.application'
-    >;
-    comparisonTable: Schema.Attribute.Component<'product.comparison-row', true>;
+    Certifications: Schema.Attribute.DynamicZone<
+      ['shared.item-feature', 'page.certification-item', 'shared.tag-item']
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    downloads: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::download.download'
-    >;
-    heroImage: Schema.Attribute.Media<'images'>;
-    howItWorks: Schema.Attribute.RichText;
-    icon: Schema.Attribute.Media<'images'>;
-    lightingEffects: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::lighting-effect.lighting-effect'
-    >;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    Downloads: Schema.Attribute.DynamicZone<
+      ['shared.item-feature', 'shared.tag-item']
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Electrical_Mechanical: Schema.Attribute.DynamicZone<
+      ['shared.item-feature', 'shared.tag-item', 'page.ip-features']
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    EngineeringPrinciples: Schema.Attribute.DynamicZone<
+      ['page.features', 'shared.item-feature', 'shared.tag-item']
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    EngineeringSupport: Schema.Attribute.DynamicZone<
+      ['shared.item-feature', 'shared.btn', 'shared.tag-item']
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    FAQ: Schema.Attribute.DynamicZone<
+      [
+        'shared.item-feature',
+        'shared.ip-features',
+        'shared.tag-item',
+        'page.features',
+      ]
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    hero: Schema.Attribute.Component<'page.hero', false> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    intro: Schema.Attribute.Text &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    IPRatings: Schema.Attribute.DynamicZone<
+      [
+        'shared.item-feature',
+        'page.stats',
+        'page.features',
+        'page.ip-features',
+        'shared.tag-item',
+      ]
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::technology.technology'
+    >;
+    Manufacturing: Schema.Attribute.DynamicZone<
+      ['shared.item-feature', 'page.features', 'shared.tag-item']
     > &
-      Schema.Attribute.Private;
-    longDescription: Schema.Attribute.RichText;
-    name: Schema.Attribute.String & Schema.Attribute.Required;
-    productFamilies: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::product-family.product-family'
-    >;
-    productSeries: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::product-sery.product-sery'
-    >;
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Materials: Schema.Attribute.DynamicZone<
+      ['shared.item-feature', 'page.image-title', 'shared.tag-item']
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Photometric: Schema.Attribute.DynamicZone<
+      ['shared.item-feature', 'page.image-title', 'shared.tag-item']
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     publishedAt: Schema.Attribute.DateTime;
-    publishTime: Schema.Attribute.DateTime;
-    relatedArticles: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::article.article'
+    relatedDownload: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::download.download'
     >;
-    relatedFaqs: Schema.Attribute.Relation<'manyToMany', 'api::faq.faq'>;
-    relatedProducts: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::product.product'
+    SeriesComparison: Schema.Attribute.DynamicZone<
+      ['shared.item-feature', 'page.series-specifications', 'shared.tag-item']
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    site_setting: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::site-setting.site-setting'
     >;
-    relatedTaqs: Schema.Attribute.Relation<'manyToMany', 'api::tag.tag'>;
-    seo: Schema.Attribute.Component<'seo.meta', false>;
-    shortDescription: Schema.Attribute.Text;
-    sites: Schema.Attribute.Relation<'manyToMany', 'api::site.site'>;
-    slug: Schema.Attribute.UID<'name'> & Schema.Attribute.Required;
+    Technology: Schema.Attribute.DynamicZone<
+      ['shared.item-feature', 'page.stats', 'page.features', 'shared.tag-item']
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    videos: Schema.Attribute.Relation<'manyToMany', 'api::video.video'>;
-  };
-}
-
-export interface ApiVideoVideo extends Struct.CollectionTypeSchema {
-  collectionName: 'videos';
-  info: {
-    displayName: 'video';
-    pluralName: 'videos';
-    singularName: 'video';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    description: Schema.Attribute.Text;
-    duration: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<'oneToMany', 'api::video.video'> &
-      Schema.Attribute.Private;
-    platform: Schema.Attribute.Enumeration<
-      ['YouTube', 'Vimeo', 'Bilibili', 'Local']
-    > &
-      Schema.Attribute.DefaultTo<'YouTube'>;
-    publishedAt: Schema.Attribute.DateTime;
-    publishTime: Schema.Attribute.DateTime;
-    relatedArticles: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::article.article'
-    >;
-    relatedProducts: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::product.product'
-    >;
-    relatedProjects: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::project.project'
-    >;
-    relatedTechnologies: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::technology.technology'
-    >;
-    seo: Schema.Attribute.Component<'seo.meta', false>;
-    sites: Schema.Attribute.Relation<'manyToMany', 'api::site.site'>;
-    slug: Schema.Attribute.UID<'title'> & Schema.Attribute.Required;
-    thumbnail: Schema.Attribute.Media<'images'>;
-    title: Schema.Attribute.String & Schema.Attribute.Required;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    videoId: Schema.Attribute.String;
-    videoType: Schema.Attribute.Enumeration<
-      [
-        'Product Demo',
-        'Installation Guide',
-        'Project Showcase',
-        'Technology Explainer',
-      ]
-    > &
-      Schema.Attribute.DefaultTo<'Product Demo'>;
-    videoUrl: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
 
@@ -2212,7 +2092,7 @@ export interface PluginUsersPermissionsUser
 }
 
 declare module '@strapi/strapi' {
-  export module Public {
+  export namespace Public {
     export interface ContentTypeSchemas {
       'admin::api-token': AdminApiToken;
       'admin::api-token-permission': AdminApiTokenPermission;
@@ -2223,27 +2103,20 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
-      'api::accessory.accessory': ApiAccessoryAccessory;
+      'api::application-page.application-page': ApiApplicationPageApplicationPage;
       'api::application.application': ApiApplicationApplication;
-      'api::article.article': ApiArticleArticle;
-      'api::brand.brand': ApiBrandBrand;
+      'api::category.category': ApiCategoryCategory;
       'api::certification.certification': ApiCertificationCertification;
+      'api::contact-page.contact-page': ApiContactPageContactPage;
       'api::download.download': ApiDownloadDownload;
-      'api::faq.faq': ApiFaqFaq;
-      'api::form-submission.form-submission': ApiFormSubmissionFormSubmission;
-      'api::industry.industry': ApiIndustryIndustry;
-      'api::lighting-effect.lighting-effect': ApiLightingEffectLightingEffect;
-      'api::navigation.navigation': ApiNavigationNavigation;
-      'api::page.page': ApiPagePage;
-      'api::product-family.product-family': ApiProductFamilyProductFamily;
-      'api::product-sery.product-sery': ApiProductSeryProductSery;
+      'api::inquiry.inquiry': ApiInquiryInquiry;
+      'api::over-view.over-view': ApiOverViewOverView;
+      'api::product-page.product-page': ApiProductPageProductPage;
       'api::product.product': ApiProductProduct;
-      'api::project.project': ApiProjectProject;
-      'api::redirect.redirect': ApiRedirectRedirect;
-      'api::site.site': ApiSiteSite;
-      'api::tag.tag': ApiTagTag;
+      'api::resourcy.resourcy': ApiResourcyResourcy;
+      'api::site-setting.site-setting': ApiSiteSettingSiteSetting;
+      'api::spec.spec': ApiSpecSpec;
       'api::technology.technology': ApiTechnologyTechnology;
-      'api::video.video': ApiVideoVideo;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

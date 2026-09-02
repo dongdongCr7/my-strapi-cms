@@ -4,54 +4,102 @@
   "info": {
     "singularName": "application",
     "pluralName": "applications",
-    "displayName": "application"
+    "displayName": "Application"
   },
   "options": {
     "draftAndPublish": true
   },
-  "pluginOptions": {},
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
   "attributes": {
+    "site_setting": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::site-setting.site-setting",
+      "inversedBy": "applications"
+    },
     "name": {
       "type": "string",
-      "required": true
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "slug": {
       "type": "uid",
-      "targetField": "name",
-      "required": true
+      "targetField": "name"
     },
-    "sites": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::site.site",
-      "inversedBy": "applications"
+    "description": {
+      "type": "text",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
-    "shortDescription": {
-      "type": "text"
+    "images": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "shared.images",
+      "repeatable": true
+    },
+    "trust_bar": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "home.trust-bar-item",
+      "repeatable": true
     },
     "longDescription": {
-      "type": "richtext"
+      "type": "text",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
-    "heroImage": {
-      "type": "media",
-      "multiple": false,
-      "allowedTypes": [
-        "images"
-      ]
+    "tags": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "shared.tag-item",
+      "repeatable": true
     },
-    "gallery": {
-      "type": "media",
-      "multiple": true,
-      "allowedTypes": [
-        "images"
-      ]
+    "features": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "shared.item-feature",
+      "repeatable": true
     },
-    "icon": {
-      "type": "media",
-      "multiple": false,
-      "allowedTypes": [
-        "images"
-      ]
+    "applications": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::application.application",
+      "inversedBy": "relatedApplication"
+    },
+    "relatedApplication": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::application.application",
+      "mappedBy": "applications"
     },
     "products": {
       "type": "relation",
@@ -59,48 +107,48 @@
       "target": "api::product.product",
       "inversedBy": "applications"
     },
+    "results": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "home.hero-stat",
+      "repeatable": true
+    },
+    "CTA": {
+      "type": "dynamiczone",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "components": [
+        "shared.item-feature",
+        "shared.btn"
+      ]
+    },
     "seo": {
       "type": "component",
-      "component": "seo.meta",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "shared.seo-meta",
       "repeatable": false
     },
-    "publishTime": {
-      "type": "datetime"
-    },
-    "industries": {
+    "category": {
       "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::industry.industry",
-      "mappedBy": "applications"
-    },
-    "articles": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::article.article",
-      "mappedBy": "relatedApplications"
-    },
-    "faqs": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::faq.faq",
-      "mappedBy": "relatedApplications"
-    },
-    "projects": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::project.project",
-      "mappedBy": "applications"
-    },
-    "lightingEffects": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::lighting-effect.lighting-effect",
+      "relation": "manyToOne",
+      "target": "api::category.category",
       "inversedBy": "applications"
     },
-    "technologies": {
+    "application_page": {
       "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::technology.technology",
+      "relation": "manyToOne",
+      "target": "api::application-page.application-page",
       "inversedBy": "applications"
     }
   }

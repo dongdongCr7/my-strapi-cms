@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_page_downloads",
+  "info": {
+    "displayName": "download"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "downloads": {
+      "type": "component",
+      "component": "shared.download-item",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

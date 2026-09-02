@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_shared_nav_link_children",
+  "info": {
+    "displayName": "nav-link-child"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "href": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text"
+    }
+  },
+  "config": {}
+}

@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_page_image_titles",
+  "info": {
+    "displayName": "media‑card‑item"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "image": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "imageAlt": {
+      "type": "string"
+    },
+    "feature": {
+      "type": "component",
+      "component": "shared.item-feature",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

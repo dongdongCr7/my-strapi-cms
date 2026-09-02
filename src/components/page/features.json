@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_page_features",
+  "info": {
+    "displayName": "features"
+  },
+  "options": {},
+  "attributes": {
+    "feature": {
+      "type": "component",
+      "component": "shared.item-feature",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

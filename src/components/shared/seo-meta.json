@@ -1,0 +1,32 @@
+{
+  "collectionName": "components_shared_seo_metas",
+  "info": {
+    "displayName": "seo-meta"
+  },
+  "options": {},
+  "attributes": {
+    "metaTitle": {
+      "type": "string"
+    },
+    "metaDescription": {
+      "type": "text"
+    },
+    "keywords": {
+      "type": "string"
+    },
+    "ogImage": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "ogImageAlt": {
+      "type": "string"
+    },
+    "canonicalUrl": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

@@ -1,0 +1,61 @@
+{
+  "kind": "collectionType",
+  "collectionName": "application_pages",
+  "info": {
+    "singularName": "application-page",
+    "pluralName": "application-pages",
+    "displayName": "ApplicationPage"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "site_setting": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::site-setting.site-setting",
+      "inversedBy": "application_page"
+    },
+    "hero": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "page.hero",
+      "repeatable": false
+    },
+    "applications": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::application.application",
+      "mappedBy": "application_page"
+    },
+    "cta": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "shared.item-feature",
+      "repeatable": false
+    },
+    "cta_btn": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "shared.btn",
+      "repeatable": false
+    }
+  }
+}

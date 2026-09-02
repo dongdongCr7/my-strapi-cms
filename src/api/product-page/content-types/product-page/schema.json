@@ -1,0 +1,57 @@
+{
+  "kind": "collectionType",
+  "collectionName": "product_pages",
+  "info": {
+    "singularName": "product-page",
+    "pluralName": "product-pages",
+    "displayName": "ProductPage"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "site_setting": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::site-setting.site-setting",
+      "inversedBy": "product_page"
+    },
+    "hero": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "page.hero",
+      "repeatable": false
+    },
+    "specs": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::spec.spec",
+      "mappedBy": "product_page"
+    },
+    "categories": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::category.category",
+      "mappedBy": "product_page"
+    },
+    "seo": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "shared.seo-meta",
+      "repeatable": false
+    }
+  }
+}
