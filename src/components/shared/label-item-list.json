@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_shared_label_item_lists",
+  "info": {
+    "displayName": "label-item-list"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "labelItem": {
+      "type": "component",
+      "component": "shared.tag-item",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

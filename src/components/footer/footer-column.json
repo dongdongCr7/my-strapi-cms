@@ -5,10 +5,10 @@
   },
   "options": {},
   "attributes": {
-    "title": {
+    "footerNavTitle": {
       "type": "string"
     },
-    "href": {
+    "footerNavHref": {
       "type": "string"
     },
     "links": {

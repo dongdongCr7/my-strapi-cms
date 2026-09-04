@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_shared_social_media_items",
+  "info": {
+    "displayName": "social-media-item"
+  },
+  "options": {},
+  "attributes": {
+    "mediaName": {
+      "type": "string"
+    },
+    "mediaHref": {
+      "type": "string"
+    },
+    "mediaImage": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "mediaImageAlt": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

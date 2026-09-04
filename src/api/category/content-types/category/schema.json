@@ -11,10 +11,10 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "site_setting": {
+    "siteSetting": {
       "type": "relation",
       "relation": "manyToOne",
-      "target": "api::site-setting.site-setting",
+      "target": "api::site.site",
       "inversedBy": "categories"
     },
     "productOrApplication": {
@@ -24,12 +24,11 @@
         "application"
       ]
     },
-    "name": {
+    "categoryName": {
       "type": "string"
     },
     "slug": {
-      "type": "uid",
-      "targetField": "name"
+      "type": "uid"
     },
     "description": {
       "type": "text"
@@ -44,8 +43,10 @@
     "imageAlt": {
       "type": "string"
     },
-    "order": {
-      "type": "integer"
+    "seo": {
+      "type": "component",
+      "component": "shared.seo-meta",
+      "repeatable": false
     },
     "products": {
       "type": "relation",
@@ -53,27 +54,22 @@
       "target": "api::product.product",
       "mappedBy": "category"
     },
-    "seo": {
-      "type": "component",
-      "component": "shared.seo-meta",
-      "repeatable": false
+    "applicationPage": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::application-page.application-page",
+      "inversedBy": "categories"
     },
-    "product_page": {
+    "overViewPage": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::over-view-page.over-view-page",
+      "inversedBy": "categories"
+    },
+    "productPage": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::product-page.product-page",
-      "inversedBy": "categories"
-    },
-    "applications": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::application.application",
-      "mappedBy": "category"
-    },
-    "over_view_page": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::over-view.over-view",
       "inversedBy": "categories"
     }
   }

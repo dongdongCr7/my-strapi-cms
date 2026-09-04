@@ -9,47 +9,32 @@
   "options": {
     "draftAndPublish": true
   },
-  "pluginOptions": {
-    "i18n": {
-      "localized": true
-    }
-  },
+  "pluginOptions": {},
   "attributes": {
-    "site_setting": {
+    "siteSetting": {
       "type": "relation",
       "relation": "oneToOne",
-      "target": "api::site-setting.site-setting",
-      "inversedBy": "product_page"
+      "target": "api::site.site",
+      "inversedBy": "productPage"
     },
     "hero": {
       "type": "component",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "component": "page.hero",
+      "component": "shared.hero",
       "repeatable": false
     },
     "specs": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::spec.spec",
-      "mappedBy": "product_page"
+      "type": "component",
+      "component": "product.spec-group",
+      "repeatable": true
     },
     "categories": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::category.category",
-      "mappedBy": "product_page"
+      "mappedBy": "productPage"
     },
     "seo": {
       "type": "component",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
       "component": "shared.seo-meta",
       "repeatable": false
     }

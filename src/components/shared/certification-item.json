@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_shared_certification_items",
+  "info": {
+    "displayName": "certification-item"
+  },
+  "options": {},
+  "attributes": {
+    "certificationName": {
+      "type": "string"
+    },
+    "image": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "imageAlt": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

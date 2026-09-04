@@ -7,7 +7,7 @@
     "displayName": "Inquiry"
   },
   "options": {
-    "draftAndPublish": false
+    "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
@@ -29,30 +29,27 @@
     "country": {
       "type": "string"
     },
-    "products": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::product.product",
-      "mappedBy": "inquiries"
-    },
     "productSku": {
       "type": "string"
     },
     "message": {
-      "type": "text"
+      "type": "string"
     },
     "attachment": {
       "type": "media",
-      "multiple": true,
+      "multiple": false,
       "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
+        "images"
       ]
     },
     "sourceUrl": {
       "type": "string"
+    },
+    "products": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::product.product",
+      "inversedBy": "inquiries"
     }
   }
 }

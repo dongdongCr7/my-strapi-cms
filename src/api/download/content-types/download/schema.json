@@ -13,25 +13,19 @@
   "attributes": {
     "downloads": {
       "type": "component",
-      "component": "page.download",
+      "component": "shared.download",
       "repeatable": true
-    },
-    "technology": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::technology.technology",
-      "inversedBy": "relatedDownload"
-    },
-    "resourcy": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::resourcy.resourcy",
-      "inversedBy": "downloads"
     },
     "products": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::product.product",
+      "inversedBy": "downloads"
+    },
+    "resourcyPage": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::resourcy-page.resourcy-page",
       "inversedBy": "downloads"
     }
   }

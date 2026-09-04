@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_product_specs",
+  "info": {
+    "displayName": "spec"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "isKey": {
+      "type": "boolean",
+      "default": false
+    },
+    "value": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

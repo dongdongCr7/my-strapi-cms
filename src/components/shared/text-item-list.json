@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_shared_text_item_lists",
+  "info": {
+    "displayName": "text‑item‑list"
+  },
+  "options": {},
+  "attributes": {
+    "textItem": {
+      "type": "component",
+      "component": "shared.text-item",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

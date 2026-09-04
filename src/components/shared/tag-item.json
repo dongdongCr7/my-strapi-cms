@@ -1,13 +1,12 @@
 {
   "collectionName": "components_shared_tag_items",
   "info": {
-    "displayName": "tag-item"
+    "displayName": "label-item"
   },
   "options": {},
   "attributes": {
     "label": {
-      "type": "string",
-      "required": true
+      "type": "string"
     }
   },
   "config": {}

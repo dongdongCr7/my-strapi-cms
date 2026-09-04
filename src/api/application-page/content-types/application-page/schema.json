@@ -9,51 +9,38 @@
   "options": {
     "draftAndPublish": true
   },
-  "pluginOptions": {
-    "i18n": {
-      "localized": true
-    }
-  },
+  "pluginOptions": {},
   "attributes": {
-    "site_setting": {
+    "siteSetting": {
       "type": "relation",
       "relation": "oneToOne",
-      "target": "api::site-setting.site-setting",
+      "target": "api::site.site",
       "inversedBy": "application_page"
     },
     "hero": {
       "type": "component",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "component": "page.hero",
+      "component": "shared.hero",
       "repeatable": false
+    },
+    "categories": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::category.category",
+      "mappedBy": "applicationPage"
     },
     "applications": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::application.application",
-      "mappedBy": "application_page"
+      "mappedBy": "applicationPage"
     },
     "cta": {
       "type": "component",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "component": "shared.item-feature",
+      "component": "shared.text-item",
       "repeatable": false
     },
-    "cta_btn": {
+    "ctaBtn": {
       "type": "component",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
       "component": "shared.btn",
       "repeatable": false
     }

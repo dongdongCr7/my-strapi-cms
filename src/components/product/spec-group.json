@@ -8,9 +8,9 @@
     "name": {
       "type": "string"
     },
-    "spec": {
+    "specs": {
       "type": "component",
-      "component": "product.product-specs",
+      "component": "product.spec",
       "repeatable": true
     }
   },

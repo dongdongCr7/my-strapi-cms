@@ -9,27 +9,12 @@
   "options": {
     "draftAndPublish": true
   },
-  "pluginOptions": {
-    "i18n": {
-      "localized": true
-    }
-  },
+  "pluginOptions": {},
   "attributes": {
     "certifications": {
       "type": "component",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "component": "page.certification-item",
+      "component": "shared.certification-item",
       "repeatable": true
-    },
-    "over_view_page": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::over-view.over-view",
-      "inversedBy": "certifications"
     }
   }
 }

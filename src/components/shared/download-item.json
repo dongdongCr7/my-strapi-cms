@@ -8,17 +8,14 @@
     "name": {
       "type": "string"
     },
-    "title": {
+    "size": {
       "type": "string"
     },
     "file": {
       "type": "media",
-      "multiple": false,
+      "multiple": true,
       "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
+        "files"
       ]
     }
   },

@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_shared_spec_row_items",
+  "info": {
+    "displayName": "spec-row-item"
+  },
+  "options": {},
+  "attributes": {
+    "specName": {
+      "type": "string"
+    },
+    "values": {
+      "type": "component",
+      "component": "shared.tag-item",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

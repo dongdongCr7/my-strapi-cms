@@ -6,15 +6,17 @@
   "options": {},
   "attributes": {
     "label": {
-      "type": "string",
-      "required": true
+      "type": "string"
     },
     "href": {
-      "type": "string",
-      "required": true
+      "type": "string"
     },
     "description": {
       "type": "text"
+    },
+    "openNewTab": {
+      "type": "boolean",
+      "default": false
     }
   },
   "config": {}

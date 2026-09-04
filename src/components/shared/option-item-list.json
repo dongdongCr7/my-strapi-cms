@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_shared_option_item_lists",
+  "info": {
+    "displayName": "option-item-list"
+  },
+  "options": {},
+  "attributes": {
+    "optionItem": {
+      "type": "component",
+      "component": "shared.option-item",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

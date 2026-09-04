@@ -5,7 +5,7 @@
   },
   "options": {},
   "attributes": {
-    "name": {
+    "text": {
       "type": "string"
     },
     "link": {

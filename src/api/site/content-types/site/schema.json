@@ -1,0 +1,145 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sites",
+  "info": {
+    "singularName": "site",
+    "pluralName": "sites",
+    "displayName": "SiteSetting"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "site": {
+      "type": "string"
+    },
+    "brandName": {
+      "type": "string"
+    },
+    "brandAccent": {
+      "type": "string"
+    },
+    "brandSubline": {
+      "type": "string"
+    },
+    "parentBrand": {
+      "type": "string"
+    },
+    "parentBrandUrl": {
+      "type": "string"
+    },
+    "navLinks": {
+      "type": "component",
+      "component": "shared.nav-link",
+      "repeatable": true
+    },
+    "headerCtaText": {
+      "type": "string"
+    },
+    "headerCtaHref": {
+      "type": "string"
+    },
+    "footerDescription": {
+      "type": "text"
+    },
+    "footerColumns": {
+      "type": "component",
+      "component": "footer.footer-column",
+      "repeatable": true
+    },
+    "footerContact": {
+      "type": "component",
+      "component": "footer.footer-contact-info",
+      "repeatable": false
+    },
+    "socialMedia": {
+      "type": "component",
+      "component": "shared.social-media-item",
+      "repeatable": true
+    },
+    "newsletter": {
+      "type": "component",
+      "component": "shared.text-item",
+      "repeatable": false
+    },
+    "newsletterPlaceholder": {
+      "type": "string"
+    },
+    "newsletterButtonLabel": {
+      "type": "string"
+    },
+    "copyrightText": {
+      "type": "string"
+    },
+    "globalSeo": {
+      "type": "component",
+      "component": "shared.seo-meta",
+      "repeatable": false
+    },
+    "favicon": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "languages": {
+      "type": "json"
+    },
+    "categories": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::category.category",
+      "mappedBy": "siteSetting"
+    },
+    "applications": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::application.application",
+      "mappedBy": "siteSetting"
+    },
+    "products": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::product.product",
+      "mappedBy": "siteSetting"
+    },
+    "application_page": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::application-page.application-page",
+      "mappedBy": "siteSetting"
+    },
+    "contactPage": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::contact-page.contact-page",
+      "mappedBy": "siteSetting"
+    },
+    "over_view_page": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::over-view-page.over-view-page",
+      "mappedBy": "siteSetting"
+    },
+    "productPage": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::product-page.product-page",
+      "mappedBy": "siteSetting"
+    },
+    "resourcyPage": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::resourcy-page.resourcy-page",
+      "mappedBy": "siteSetting"
+    },
+    "technologyPage": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::technology-page.technology-page",
+      "mappedBy": "siteSetting"
+    }
+  }
+}

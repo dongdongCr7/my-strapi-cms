@@ -9,12 +9,14 @@
       "type": "media",
       "multiple": false,
       "allowedTypes": [
-        "images"
+        "images",
+        "files",
+        "videos",
+        "audios"
       ]
     },
     "isKey": {
-      "type": "boolean",
-      "default": false
+      "type": "boolean"
     },
     "imageAlt": {
       "type": "string"

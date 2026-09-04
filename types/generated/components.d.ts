@@ -6,9 +6,9 @@ export interface FooterFooterColumn extends Struct.ComponentSchema {
     displayName: 'footer-column';
   };
   attributes: {
-    href: Schema.Attribute.String;
+    footerNavHref: Schema.Attribute.String;
+    footerNavTitle: Schema.Attribute.String;
     links: Schema.Attribute.Component<'shared.nav-link', true>;
-    title: Schema.Attribute.String;
   };
 }
 
@@ -30,146 +30,19 @@ export interface FooterSocialLink extends Struct.ComponentSchema {
     displayName: 'social-link';
   };
   attributes: {
-    platform: Schema.Attribute.Enumeration<
-      ['linkedin', 'twitter', 'youtube', 'facebook']
-    >;
+    platform: Schema.Attribute.String;
     url: Schema.Attribute.String;
   };
 }
 
-export interface HomeHeroStat extends Struct.ComponentSchema {
-  collectionName: 'components_home_hero_stats';
+export interface ProductSpec extends Struct.ComponentSchema {
+  collectionName: 'components_product_specs';
   info: {
-    displayName: 'hero-stat';
-  };
-  attributes: {
-    label: Schema.Attribute.String;
-    value: Schema.Attribute.String;
-  };
-}
-
-export interface HomeTrustBarItem extends Struct.ComponentSchema {
-  collectionName: 'components_home_trust_bar_items';
-  info: {
-    displayName: 'trust-bar-item';
-  };
-  attributes: {
-    icon: Schema.Attribute.String;
-    label: Schema.Attribute.String;
-    value: Schema.Attribute.String;
-  };
-}
-
-export interface PageCertificationItem extends Struct.ComponentSchema {
-  collectionName: 'components_page_certification_items';
-  info: {
-    displayName: 'certification-item';
-  };
-  attributes: {
-    description: Schema.Attribute.Text;
-    image: Schema.Attribute.Media<'images'>;
-    imageAlt: Schema.Attribute.String;
-    name: Schema.Attribute.String;
-    title: Schema.Attribute.String;
-  };
-}
-
-export interface PageDownload extends Struct.ComponentSchema {
-  collectionName: 'components_page_downloads';
-  info: {
-    displayName: 'download';
-  };
-  attributes: {
-    description: Schema.Attribute.Text;
-    downloads: Schema.Attribute.Component<'shared.download-item', true>;
-    name: Schema.Attribute.String;
-  };
-}
-
-export interface PageFeatures extends Struct.ComponentSchema {
-  collectionName: 'components_page_features';
-  info: {
-    displayName: 'features';
-  };
-  attributes: {
-    feature: Schema.Attribute.Component<'shared.item-feature', true>;
-  };
-}
-
-export interface PageHero extends Struct.ComponentSchema {
-  collectionName: 'components_page_heroes';
-  info: {
-    displayName: 'hero';
-  };
-  attributes: {
-    heroDescription: Schema.Attribute.Text;
-    heroImage: Schema.Attribute.Media<'images'>;
-    heroImageAlt: Schema.Attribute.String;
-    heroTitle: Schema.Attribute.String;
-  };
-}
-
-export interface PageImageTitle extends Struct.ComponentSchema {
-  collectionName: 'components_page_image_titles';
-  info: {
-    displayName: 'media\u2011card\u2011item';
-  };
-  attributes: {
-    feature: Schema.Attribute.Component<'shared.item-feature', true>;
-    image: Schema.Attribute.Media<'images', true>;
-    imageAlt: Schema.Attribute.String;
-    name: Schema.Attribute.String;
-  };
-}
-
-export interface PageIpFeatures extends Struct.ComponentSchema {
-  collectionName: 'components_page_ip_features';
-  info: {
-    displayName: 'infoes';
-  };
-  attributes: {
-    info: Schema.Attribute.Component<'shared.ip-features', true>;
-  };
-}
-
-export interface PageSeriesSpecifications extends Struct.ComponentSchema {
-  collectionName: 'components_page_series_specifications';
-  info: {
-    displayName: 'seriesSpecifications';
-  };
-  attributes: {
-    CCT_range: Schema.Attribute.String;
-    Chip_density: Schema.Attribute.String;
-    CRI: Schema.Attribute.String;
-    Cutting_length: Schema.Attribute.String;
-    IP_rating: Schema.Attribute.String;
-    name: Schema.Attribute.String;
-    Output: Schema.Attribute.String;
-    PCB_width: Schema.Attribute.String;
-    tag: Schema.Attribute.Enumeration<['standard', 'premium', 'ultra']>;
-    Typical_application: Schema.Attribute.String;
-    Voltage: Schema.Attribute.String;
-  };
-}
-
-export interface PageStats extends Struct.ComponentSchema {
-  collectionName: 'components_page_stats';
-  info: {
-    displayName: 'stats';
-  };
-  attributes: {
-    stat: Schema.Attribute.Component<'home.hero-stat', true>;
-  };
-}
-
-export interface ProductProductSpecs extends Struct.ComponentSchema {
-  collectionName: 'components_product_product_specs';
-  info: {
-    displayName: 'specs';
+    displayName: 'spec';
   };
   attributes: {
     isKey: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
-    name: Schema.Attribute.String & Schema.Attribute.Required;
+    name: Schema.Attribute.String;
     value: Schema.Attribute.String;
   };
 }
@@ -181,7 +54,7 @@ export interface ProductSpecGroup extends Struct.ComponentSchema {
   };
   attributes: {
     name: Schema.Attribute.String;
-    spec: Schema.Attribute.Component<'product.product-specs', true>;
+    specs: Schema.Attribute.Component<'product.spec', true>;
   };
 }
 
@@ -192,6 +65,32 @@ export interface SharedBtn extends Struct.ComponentSchema {
   };
   attributes: {
     link: Schema.Attribute.String;
+    text: Schema.Attribute.String;
+  };
+}
+
+export interface SharedCertificationItem extends Struct.ComponentSchema {
+  collectionName: 'components_shared_certification_items';
+  info: {
+    displayName: 'certification-item';
+  };
+  attributes: {
+    certificationName: Schema.Attribute.String;
+    description: Schema.Attribute.String;
+    image: Schema.Attribute.Media<'images', true>;
+    imageAlt: Schema.Attribute.String;
+    title: Schema.Attribute.String;
+  };
+}
+
+export interface SharedDownload extends Struct.ComponentSchema {
+  collectionName: 'components_shared_downloads';
+  info: {
+    displayName: 'download';
+  };
+  attributes: {
+    description: Schema.Attribute.Text;
+    downloads: Schema.Attribute.Component<'shared.download-item', false>;
     name: Schema.Attribute.String;
   };
 }
@@ -202,9 +101,22 @@ export interface SharedDownloadItem extends Struct.ComponentSchema {
     displayName: 'download-item';
   };
   attributes: {
-    file: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    file: Schema.Attribute.Media<'files', true>;
     name: Schema.Attribute.String;
-    title: Schema.Attribute.String;
+    size: Schema.Attribute.String;
+  };
+}
+
+export interface SharedHero extends Struct.ComponentSchema {
+  collectionName: 'components_shared_heroes';
+  info: {
+    displayName: 'hero';
+  };
+  attributes: {
+    heroDescription: Schema.Attribute.Text;
+    heroImage: Schema.Attribute.Media<'images'>;
+    heroImageAlt: Schema.Attribute.String;
+    heroTitle: Schema.Attribute.String;
   };
 }
 
@@ -214,14 +126,14 @@ export interface SharedImages extends Struct.ComponentSchema {
     displayName: 'images';
   };
   attributes: {
-    image: Schema.Attribute.Media<'images'>;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     imageAlt: Schema.Attribute.String;
-    isKey: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    isKey: Schema.Attribute.Boolean;
   };
 }
 
-export interface SharedIpFeatures extends Struct.ComponentSchema {
-  collectionName: 'components_shared_ip_features';
+export interface SharedInfoItem extends Struct.ComponentSchema {
+  collectionName: 'components_shared_info_items';
   info: {
     displayName: 'info\u2011item';
   };
@@ -232,14 +144,37 @@ export interface SharedIpFeatures extends Struct.ComponentSchema {
   };
 }
 
-export interface SharedItemFeature extends Struct.ComponentSchema {
-  collectionName: 'components_shared_item_features';
+export interface SharedInfoItemList extends Struct.ComponentSchema {
+  collectionName: 'components_shared_info_item_lists';
   info: {
-    displayName: 'text\u2011item';
+    displayName: 'info-item-list';
   };
   attributes: {
-    description: Schema.Attribute.Text;
+    info: Schema.Attribute.Component<'shared.info-item', true>;
+  };
+}
+
+export interface SharedLabelItemList extends Struct.ComponentSchema {
+  collectionName: 'components_shared_label_item_lists';
+  info: {
+    displayName: 'label-item-list';
+  };
+  attributes: {
+    labelItem: Schema.Attribute.Component<'shared.tag-item', true>;
     title: Schema.Attribute.String;
+  };
+}
+
+export interface SharedMediaCardItem extends Struct.ComponentSchema {
+  collectionName: 'components_shared_media_card_items';
+  info: {
+    displayName: 'media\u2011card\u2011item';
+  };
+  attributes: {
+    image: Schema.Attribute.Media<'images'>;
+    imageAlt: Schema.Attribute.String;
+    name: Schema.Attribute.String;
+    textItem: Schema.Attribute.Component<'shared.text-item', true>;
   };
 }
 
@@ -250,8 +185,9 @@ export interface SharedNavLink extends Struct.ComponentSchema {
   };
   attributes: {
     children: Schema.Attribute.Component<'shared.nav-link-child', true>;
-    href: Schema.Attribute.String & Schema.Attribute.Required;
-    label: Schema.Attribute.String & Schema.Attribute.Required;
+    href: Schema.Attribute.String;
+    label: Schema.Attribute.String;
+    openNewTab: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
   };
 }
 
@@ -262,8 +198,30 @@ export interface SharedNavLinkChild extends Struct.ComponentSchema {
   };
   attributes: {
     description: Schema.Attribute.Text;
-    href: Schema.Attribute.String & Schema.Attribute.Required;
-    label: Schema.Attribute.String & Schema.Attribute.Required;
+    href: Schema.Attribute.String;
+    label: Schema.Attribute.String;
+    openNewTab: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+  };
+}
+
+export interface SharedOptionItem extends Struct.ComponentSchema {
+  collectionName: 'components_shared_option_items';
+  info: {
+    displayName: 'option-item';
+  };
+  attributes: {
+    label: Schema.Attribute.String;
+    value: Schema.Attribute.String;
+  };
+}
+
+export interface SharedOptionItemList extends Struct.ComponentSchema {
+  collectionName: 'components_shared_option_item_lists';
+  info: {
+    displayName: 'option-item-list';
+  };
+  attributes: {
+    optionItem: Schema.Attribute.Component<'shared.option-item', true>;
   };
 }
 
@@ -282,13 +240,69 @@ export interface SharedSeoMeta extends Struct.ComponentSchema {
   };
 }
 
+export interface SharedSocialMediaItem extends Struct.ComponentSchema {
+  collectionName: 'components_shared_social_media_items';
+  info: {
+    displayName: 'social-media-item';
+  };
+  attributes: {
+    mediaHref: Schema.Attribute.String;
+    mediaImage: Schema.Attribute.Media<'images'>;
+    mediaImageAlt: Schema.Attribute.String;
+    mediaName: Schema.Attribute.String;
+  };
+}
+
+export interface SharedSpecRowItem extends Struct.ComponentSchema {
+  collectionName: 'components_shared_spec_row_items';
+  info: {
+    displayName: 'spec-row-item';
+  };
+  attributes: {
+    specName: Schema.Attribute.String;
+    values: Schema.Attribute.Component<'shared.tag-item', true>;
+  };
+}
+
 export interface SharedTagItem extends Struct.ComponentSchema {
   collectionName: 'components_shared_tag_items';
   info: {
-    displayName: 'tag-item';
+    displayName: 'label-item';
   };
   attributes: {
-    label: Schema.Attribute.String & Schema.Attribute.Required;
+    label: Schema.Attribute.String;
+  };
+}
+
+export interface SharedTextItem extends Struct.ComponentSchema {
+  collectionName: 'components_shared_text_items';
+  info: {
+    displayName: 'text\u2011item';
+  };
+  attributes: {
+    description: Schema.Attribute.Text;
+    title: Schema.Attribute.String;
+  };
+}
+
+export interface SharedTextItemList extends Struct.ComponentSchema {
+  collectionName: 'components_shared_text_item_lists';
+  info: {
+    displayName: 'text\u2011item\u2011list';
+  };
+  attributes: {
+    textItem: Schema.Attribute.Component<'shared.text-item', true>;
+  };
+}
+
+export interface SharedTrustBarItem extends Struct.ComponentSchema {
+  collectionName: 'components_shared_trust_bar_items';
+  info: {
+    displayName: 'trust-bar-item';
+  };
+  attributes: {
+    icon: Schema.Attribute.String;
+    value: Schema.Attribute.String;
   };
 }
 
@@ -298,27 +312,29 @@ declare module '@strapi/strapi' {
       'footer.footer-column': FooterFooterColumn;
       'footer.footer-contact-info': FooterFooterContactInfo;
       'footer.social-link': FooterSocialLink;
-      'home.hero-stat': HomeHeroStat;
-      'home.trust-bar-item': HomeTrustBarItem;
-      'page.certification-item': PageCertificationItem;
-      'page.download': PageDownload;
-      'page.features': PageFeatures;
-      'page.hero': PageHero;
-      'page.image-title': PageImageTitle;
-      'page.ip-features': PageIpFeatures;
-      'page.series-specifications': PageSeriesSpecifications;
-      'page.stats': PageStats;
-      'product.product-specs': ProductProductSpecs;
+      'product.spec': ProductSpec;
       'product.spec-group': ProductSpecGroup;
       'shared.btn': SharedBtn;
+      'shared.certification-item': SharedCertificationItem;
+      'shared.download': SharedDownload;
       'shared.download-item': SharedDownloadItem;
+      'shared.hero': SharedHero;
       'shared.images': SharedImages;
-      'shared.ip-features': SharedIpFeatures;
-      'shared.item-feature': SharedItemFeature;
+      'shared.info-item': SharedInfoItem;
+      'shared.info-item-list': SharedInfoItemList;
+      'shared.label-item-list': SharedLabelItemList;
+      'shared.media-card-item': SharedMediaCardItem;
       'shared.nav-link': SharedNavLink;
       'shared.nav-link-child': SharedNavLinkChild;
+      'shared.option-item': SharedOptionItem;
+      'shared.option-item-list': SharedOptionItemList;
       'shared.seo-meta': SharedSeoMeta;
+      'shared.social-media-item': SharedSocialMediaItem;
+      'shared.spec-row-item': SharedSpecRowItem;
       'shared.tag-item': SharedTagItem;
+      'shared.text-item': SharedTextItem;
+      'shared.text-item-list': SharedTextItemList;
+      'shared.trust-bar-item': SharedTrustBarItem;
     }
   }
 }

@@ -6,17 +6,19 @@
   "options": {},
   "attributes": {
     "label": {
-      "type": "string",
-      "required": true
+      "type": "string"
     },
     "href": {
-      "type": "string",
-      "required": true
+      "type": "string"
     },
     "children": {
       "type": "component",
       "component": "shared.nav-link-child",
       "repeatable": true
+    },
+    "openNewTab": {
+      "type": "boolean",
+      "default": false
     }
   },
   "config": {}

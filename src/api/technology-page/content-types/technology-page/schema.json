@@ -1,0 +1,46 @@
+{
+  "kind": "collectionType",
+  "collectionName": "technology_pages",
+  "info": {
+    "singularName": "technology-page",
+    "pluralName": "technology-pages",
+    "displayName": "TechnologyPage"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "siteSetting": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::site.site",
+      "inversedBy": "technologyPage"
+    },
+    "hero": {
+      "type": "component",
+      "component": "shared.hero",
+      "repeatable": false
+    },
+    "intro": {
+      "type": "string"
+    },
+    "blockContent": {
+      "type": "dynamiczone",
+      "components": [
+        "shared.text-item",
+        "shared.text-item-list",
+        "shared.tag-item",
+        "shared.seo-meta",
+        "shared.option-item",
+        "shared.option-item-list",
+        "shared.info-item",
+        "shared.info-item-list",
+        "shared.media-card-item",
+        "shared.trust-bar-item",
+        "shared.label-item-list",
+        "shared.spec-row-item"
+      ]
+    }
+  }
+}

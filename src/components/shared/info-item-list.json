@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_shared_info_item_lists",
+  "info": {
+    "displayName": "info-item-list"
+  },
+  "options": {},
+  "attributes": {
+    "info": {
+      "type": "component",
+      "component": "shared.info-item",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

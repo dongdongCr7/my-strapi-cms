@@ -1,0 +1,62 @@
+{
+  "kind": "collectionType",
+  "collectionName": "over_view_pages",
+  "info": {
+    "singularName": "over-view-page",
+    "pluralName": "over-view-pages",
+    "displayName": "OverViewPage"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "siteSetting": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::site.site",
+      "inversedBy": "over_view_page"
+    },
+    "hero": {
+      "type": "component",
+      "component": "shared.hero",
+      "repeatable": false
+    },
+    "heroTag": {
+      "type": "string"
+    },
+    "heroBtn": {
+      "type": "component",
+      "component": "shared.btn",
+      "repeatable": true
+    },
+    "heroTrust": {
+      "type": "component",
+      "component": "shared.trust-bar-item",
+      "repeatable": true
+    },
+    "blockContent": {
+      "type": "dynamiczone",
+      "components": [
+        "shared.text-item-list",
+        "shared.text-item",
+        "shared.tag-item",
+        "shared.option-item",
+        "shared.option-item-list",
+        "shared.btn"
+      ]
+    },
+    "categories": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::category.category",
+      "mappedBy": "overViewPage"
+    },
+    "applications": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::application.application",
+      "mappedBy": "overViewPage"
+    }
+  }
+}

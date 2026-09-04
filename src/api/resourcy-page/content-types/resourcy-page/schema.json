@@ -1,0 +1,53 @@
+{
+  "kind": "collectionType",
+  "collectionName": "resourcy_pages",
+  "info": {
+    "singularName": "resourcy-page",
+    "pluralName": "resourcy-pages",
+    "displayName": "ResourcyPage"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "siteSetting": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::site.site",
+      "inversedBy": "resourcyPage"
+    },
+    "hero": {
+      "type": "component",
+      "component": "shared.hero",
+      "repeatable": false
+    },
+    "intro": {
+      "type": "string"
+    },
+    "note": {
+      "type": "string"
+    },
+    "downloads": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::download.download",
+      "mappedBy": "resourcyPage"
+    },
+    "cta": {
+      "type": "component",
+      "component": "shared.text-item",
+      "repeatable": false
+    },
+    "ctaBtn": {
+      "type": "component",
+      "component": "shared.btn",
+      "repeatable": false
+    },
+    "seo": {
+      "type": "component",
+      "component": "shared.seo-meta",
+      "repeatable": false
+    }
+  }
+}
