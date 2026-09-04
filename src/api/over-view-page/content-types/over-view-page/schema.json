@@ -9,7 +9,11 @@
   "options": {
     "draftAndPublish": true
   },
-  "pluginOptions": {},
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
   "attributes": {
     "siteSetting": {
       "type": "relation",
@@ -19,24 +23,49 @@
     },
     "hero": {
       "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
       "component": "shared.hero",
       "repeatable": false
     },
     "heroTag": {
-      "type": "string"
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "heroBtn": {
       "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
       "component": "shared.btn",
       "repeatable": true
     },
     "heroTrust": {
       "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
       "component": "shared.trust-bar-item",
       "repeatable": true
     },
     "blockContent": {
       "type": "dynamiczone",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
       "components": [
         "shared.text-item-list",
         "shared.text-item",

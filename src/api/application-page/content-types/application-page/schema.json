@@ -9,7 +9,11 @@
   "options": {
     "draftAndPublish": true
   },
-  "pluginOptions": {},
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
   "attributes": {
     "siteSetting": {
       "type": "relation",
@@ -19,6 +23,11 @@
     },
     "hero": {
       "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
       "component": "shared.hero",
       "repeatable": false
     },
@@ -36,11 +45,21 @@
     },
     "cta": {
       "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
       "component": "shared.text-item",
       "repeatable": false
     },
     "ctaBtn": {
       "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
       "component": "shared.btn",
       "repeatable": false
     }
