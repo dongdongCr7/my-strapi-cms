@@ -1467,6 +1467,7 @@ export interface ApiTechnologyPageTechnologyPage
         'shared.trust-bar-item',
         'shared.label-item-list',
         'shared.spec-row-item',
+        'shared.tech-section',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{

@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_shared_tech_sections",
+  "info": {
+    "displayName": "tech-section"
+  },
+  "options": {},
+  "attributes": {
+    "anchorId": {
+      "type": "string"
+    },
+    "tag": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "menuSummary": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

@@ -274,6 +274,20 @@ export interface SharedTagItem extends Struct.ComponentSchema {
   };
 }
 
+export interface SharedTechSection extends Struct.ComponentSchema {
+  collectionName: 'components_shared_tech_sections';
+  info: {
+    displayName: 'tech-section';
+  };
+  attributes: {
+    anchorId: Schema.Attribute.String;
+    description: Schema.Attribute.Text;
+    menuSummary: Schema.Attribute.String;
+    tag: Schema.Attribute.String;
+    title: Schema.Attribute.String;
+  };
+}
+
 export interface SharedTextItem extends Struct.ComponentSchema {
   collectionName: 'components_shared_text_items';
   info: {
@@ -332,6 +346,7 @@ declare module '@strapi/strapi' {
       'shared.social-media-item': SharedSocialMediaItem;
       'shared.spec-row-item': SharedSpecRowItem;
       'shared.tag-item': SharedTagItem;
+      'shared.tech-section': SharedTechSection;
       'shared.text-item': SharedTextItem;
       'shared.text-item-list': SharedTextItemList;
       'shared.trust-bar-item': SharedTrustBarItem;

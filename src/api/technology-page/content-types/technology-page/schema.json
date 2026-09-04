@@ -58,7 +58,8 @@
         "shared.media-card-item",
         "shared.trust-bar-item",
         "shared.label-item-list",
-        "shared.spec-row-item"
+        "shared.spec-row-item",
+        "shared.tech-section"
       ]
     }
   }
