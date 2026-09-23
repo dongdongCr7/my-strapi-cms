@@ -81,11 +81,21 @@
       "target": "api::category.category",
       "mappedBy": "overViewPage"
     },
-    "applications": {
+    "certifications": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::application.application",
+      "target": "api::certification.certification",
       "mappedBy": "overViewPage"
+    },
+    "seo": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "shared.seo-meta",
+      "repeatable": false
     }
   }
 }

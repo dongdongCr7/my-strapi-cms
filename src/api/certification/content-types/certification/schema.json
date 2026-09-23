@@ -24,6 +24,18 @@
       },
       "component": "shared.certification-item",
       "repeatable": true
+    },
+    "overViewPage": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::over-view-page.over-view-page",
+      "inversedBy": "certifications"
+    },
+    "technologyPage": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::technology-page.technology-page",
+      "inversedBy": "certifications"
     }
   }
 }

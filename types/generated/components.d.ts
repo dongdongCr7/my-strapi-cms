@@ -90,7 +90,10 @@ export interface SharedDownload extends Struct.ComponentSchema {
   };
   attributes: {
     description: Schema.Attribute.Text;
-    downloads: Schema.Attribute.Component<'shared.download-item', false>;
+    downloadItem: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::download.download'
+    >;
     name: Schema.Attribute.String;
   };
 }
@@ -264,6 +267,16 @@ export interface SharedSpecRowItem extends Struct.ComponentSchema {
   };
 }
 
+export interface SharedSpecRowItemList extends Struct.ComponentSchema {
+  collectionName: 'components_shared_spec_row_item_lists';
+  info: {
+    displayName: 'spec-row-item-list';
+  };
+  attributes: {
+    row: Schema.Attribute.Component<'shared.spec-row-item', true>;
+  };
+}
+
 export interface SharedTagItem extends Struct.ComponentSchema {
   collectionName: 'components_shared_tag_items';
   info: {
@@ -345,6 +358,7 @@ declare module '@strapi/strapi' {
       'shared.seo-meta': SharedSeoMeta;
       'shared.social-media-item': SharedSocialMediaItem;
       'shared.spec-row-item': SharedSpecRowItem;
+      'shared.spec-row-item-list': SharedSpecRowItemList;
       'shared.tag-item': SharedTagItem;
       'shared.tech-section': SharedTechSection;
       'shared.text-item': SharedTextItem;

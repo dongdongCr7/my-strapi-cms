@@ -48,10 +48,14 @@
       }
     },
     "downloads": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::download.download",
-      "mappedBy": "resourcyPage"
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "shared.download",
+      "repeatable": true
     },
     "cta": {
       "type": "component",

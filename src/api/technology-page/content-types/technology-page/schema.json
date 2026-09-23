@@ -31,14 +31,6 @@
       "component": "shared.hero",
       "repeatable": false
     },
-    "intro": {
-      "type": "string",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
     "blockContent": {
       "type": "dynamiczone",
       "pluginOptions": {
@@ -59,8 +51,37 @@
         "shared.trust-bar-item",
         "shared.label-item-list",
         "shared.spec-row-item",
-        "shared.tech-section"
+        "shared.tech-section",
+        "shared.spec-row-item-list"
       ]
+    },
+    "applications": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::application.application",
+      "mappedBy": "technologyPage"
+    },
+    "certifications": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::certification.certification",
+      "mappedBy": "technologyPage"
+    },
+    "downloads": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::download.download",
+      "mappedBy": "technologyPage"
+    },
+    "seo": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "shared.seo-meta",
+      "repeatable": false
     }
   }
 }

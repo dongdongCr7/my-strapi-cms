@@ -11,10 +11,10 @@
     "description": {
       "type": "text"
     },
-    "downloads": {
-      "type": "component",
-      "component": "shared.download-item",
-      "repeatable": false
+    "downloadItem": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::download.download"
     }
   },
   "config": {}

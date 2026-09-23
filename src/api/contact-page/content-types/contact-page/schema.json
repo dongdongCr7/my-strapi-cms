@@ -31,6 +31,14 @@
       "component": "shared.hero",
       "repeatable": false
     },
+    "companyName": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
     "address": {
       "type": "string",
       "pluginOptions": {
@@ -91,6 +99,16 @@
         }
       },
       "component": "shared.btn",
+      "repeatable": false
+    },
+    "seo": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "shared.seo-meta",
       "repeatable": false
     }
   }

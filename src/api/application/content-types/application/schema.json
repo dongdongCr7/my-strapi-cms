@@ -145,10 +145,10 @@
       "target": "api::application-page.application-page",
       "inversedBy": "applications"
     },
-    "overViewPage": {
+    "technologyPage": {
       "type": "relation",
       "relation": "manyToOne",
-      "target": "api::over-view-page.over-view-page",
+      "target": "api::technology-page.technology-page",
       "inversedBy": "applications"
     }
   }

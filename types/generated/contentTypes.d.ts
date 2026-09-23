@@ -532,6 +532,12 @@ export interface ApiApplicationPageApplicationPage
       'api::application-page.application-page'
     >;
     publishedAt: Schema.Attribute.DateTime;
+    seo: Schema.Attribute.Component<'shared.seo-meta', false> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     siteSetting: Schema.Attribute.Relation<'oneToOne', 'api::site.site'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -619,10 +625,6 @@ export interface ApiApplicationApplication extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
-    overViewPage: Schema.Attribute.Relation<
-      'manyToOne',
-      'api::over-view-page.over-view-page'
-    >;
     products: Schema.Attribute.Relation<'manyToMany', 'api::product.product'>;
     productsUsed: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
@@ -643,6 +645,10 @@ export interface ApiApplicationApplication extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
+    technologyPage: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::technology-page.technology-page'
+    >;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -773,7 +779,15 @@ export interface ApiCertificationCertification
       'oneToMany',
       'api::certification.certification'
     >;
+    overViewPage: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::over-view-page.over-view-page'
+    >;
     publishedAt: Schema.Attribute.DateTime;
+    technologyPage: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::technology-page.technology-page'
+    >;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -800,6 +814,12 @@ export interface ApiContactPageContactPage extends Struct.CollectionTypeSchema {
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: false;
+        };
+      }>;
+    companyName: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
         };
       }>;
     createdAt: Schema.Attribute.DateTime;
@@ -847,6 +867,12 @@ export interface ApiContactPageContactPage extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
+    seo: Schema.Attribute.Component<'shared.seo-meta', false> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     siteSetting: Schema.Attribute.Relation<'oneToOne', 'api::site.site'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -879,7 +905,7 @@ export interface ApiDownloadDownload extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    downloads: Schema.Attribute.Component<'shared.download', true> &
+    download: Schema.Attribute.Component<'shared.download-item', false> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -892,9 +918,9 @@ export interface ApiDownloadDownload extends Struct.CollectionTypeSchema {
     >;
     products: Schema.Attribute.Relation<'manyToMany', 'api::product.product'>;
     publishedAt: Schema.Attribute.DateTime;
-    resourcyPage: Schema.Attribute.Relation<
+    technologyPage: Schema.Attribute.Relation<
       'manyToOne',
-      'api::resourcy-page.resourcy-page'
+      'api::technology-page.technology-page'
     >;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -957,10 +983,6 @@ export interface ApiOverViewPageOverViewPage
     };
   };
   attributes: {
-    applications: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::application.application'
-    >;
     blockContent: Schema.Attribute.DynamicZone<
       [
         'shared.text-item-list',
@@ -979,6 +1001,10 @@ export interface ApiOverViewPageOverViewPage
     categories: Schema.Attribute.Relation<
       'oneToMany',
       'api::category.category'
+    >;
+    certifications: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::certification.certification'
     >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -1013,6 +1039,12 @@ export interface ApiOverViewPageOverViewPage
       'api::over-view-page.over-view-page'
     >;
     publishedAt: Schema.Attribute.DateTime;
+    seo: Schema.Attribute.Component<'shared.seo-meta', false> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     siteSetting: Schema.Attribute.Relation<'oneToOne', 'api::site.site'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -1214,7 +1246,12 @@ export interface ApiResourcyPageResourcyPage
           localized: true;
         };
       }>;
-    downloads: Schema.Attribute.Relation<'oneToMany', 'api::download.download'>;
+    downloads: Schema.Attribute.Component<'shared.download', true> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     hero: Schema.Attribute.Component<'shared.hero', false> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
@@ -1453,6 +1490,10 @@ export interface ApiTechnologyPageTechnologyPage
     };
   };
   attributes: {
+    applications: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::application.application'
+    >;
     blockContent: Schema.Attribute.DynamicZone<
       [
         'shared.text-item',
@@ -1468,6 +1509,7 @@ export interface ApiTechnologyPageTechnologyPage
         'shared.label-item-list',
         'shared.spec-row-item',
         'shared.tech-section',
+        'shared.spec-row-item-list',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -1475,16 +1517,15 @@ export interface ApiTechnologyPageTechnologyPage
           localized: true;
         };
       }>;
+    certifications: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::certification.certification'
+    >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    downloads: Schema.Attribute.Relation<'oneToMany', 'api::download.download'>;
     hero: Schema.Attribute.Component<'shared.hero', false> &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    intro: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -1496,6 +1537,12 @@ export interface ApiTechnologyPageTechnologyPage
       'api::technology-page.technology-page'
     >;
     publishedAt: Schema.Attribute.DateTime;
+    seo: Schema.Attribute.Component<'shared.seo-meta', false> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     siteSetting: Schema.Attribute.Relation<'oneToOne', 'api::site.site'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &

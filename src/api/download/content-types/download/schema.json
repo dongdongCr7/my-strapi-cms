@@ -15,15 +15,15 @@
     }
   },
   "attributes": {
-    "downloads": {
+    "download": {
       "type": "component",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "component": "shared.download",
-      "repeatable": true
+      "component": "shared.download-item",
+      "repeatable": false
     },
     "products": {
       "type": "relation",
@@ -31,10 +31,10 @@
       "target": "api::product.product",
       "inversedBy": "downloads"
     },
-    "resourcyPage": {
+    "technologyPage": {
       "type": "relation",
       "relation": "manyToOne",
-      "target": "api::resourcy-page.resourcy-page",
+      "target": "api::technology-page.technology-page",
       "inversedBy": "downloads"
     }
   }
